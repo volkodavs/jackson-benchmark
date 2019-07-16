@@ -1,6 +1,7 @@
 package com.sergeyvolkodav;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -15,8 +16,8 @@ import org.openjdk.jmh.annotations.State;
 @State(Scope.Benchmark)
 public class ExecutionPlan {
 
-    private List<String> jsons;
-    private List<Event> events;
+    private List<String> jsons = new ArrayList<>();
+    private List<Event> events = new ArrayList<>();
 
     private ObjectMapper mapper = new ObjectMapper();
 
