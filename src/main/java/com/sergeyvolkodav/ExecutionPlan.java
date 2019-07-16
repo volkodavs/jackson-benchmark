@@ -1,6 +1,5 @@
 package com.sergeyvolkodav;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -31,20 +30,10 @@ public class ExecutionPlan {
         for (int i = 0; i < arraySize; i++) {
             Event event = new Event();
             event.setId(random.nextLong());
-            event.setSportId(random.nextLong());
-            event.setCategoryIds(random.longs(50,
-                    1,
-                    4)
-                    .boxed()
-                    .toArray(Long[]::new));
-            event.setInRunning(true);
-            event.setStartTime(Instant.now());
             event.setName(java.util.UUID.randomUUID().toString());
-
 
             events.add(event);
             jsons.add(mapper.writeValueAsString(event));
-
         }
     }
 
