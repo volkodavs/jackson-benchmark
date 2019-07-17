@@ -1,4 +1,4 @@
-package com.sergeyvolkodav;
+package com.sergeyvolkodav.model;
 
 public class Sport {
 

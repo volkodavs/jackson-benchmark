@@ -12,6 +12,8 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
+import com.sergeyvolkodav.model.Event;
+import com.sergeyvolkodav.model.Sport;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Measurement;
@@ -27,10 +29,10 @@ public class JacksonBenchmark {
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.SECONDS)
-    public void jacksonStreamRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
+    public void tinyJacksonStreamRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
 
-        for (int i = 0; i < plan.getJsons().size(); i++) {
-            byte[] bytes = plan.getJsons().get(i);
+        for (int i = 0; i < plan.getTinyJsons().size(); i++) {
+            byte[] bytes = plan.getTinyJsons().get(i);
             Sport sport = new Sport();
             try (JsonParser parser = plan.getFactory()
                     .createParser(bytes)) {
@@ -55,10 +57,10 @@ public class JacksonBenchmark {
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.SECONDS)
-    public void jacksonStreamWrite(ExecutionPlan plan, Blackhole blackhole) throws IOException {
+    public void tinyJacksonStreamWrite(ExecutionPlan plan, Blackhole blackhole) throws IOException {
 
-        for (int i = 0; i < plan.getJsons().size(); i++) {
-            Sport sport = plan.getSports().get(i);
+        for (int i = 0; i < plan.getTinyJsons().size(); i++) {
+            Sport sport = plan.getTinyObjects().get(i);
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             try (JsonGenerator generator =
@@ -79,10 +81,10 @@ public class JacksonBenchmark {
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.SECONDS)
-    public void jsonWrite(ExecutionPlan plan, Blackhole blackhole) throws JsonProcessingException {
+    public void tinyJsonWrite(ExecutionPlan plan, Blackhole blackhole) throws JsonProcessingException {
 
-        for (int i = 0; i < plan.getJsons().size(); i++) {
-            Sport sport = plan.getSports().get(i);
+        for (int i = 0; i < plan.getTinyObjects().size(); i++) {
+            Sport sport = plan.getTinyObjects().get(i);
             String json = plan.getMapper().writeValueAsString(sport);
 
             blackhole.consume(json);
@@ -92,14 +94,46 @@ public class JacksonBenchmark {
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.SECONDS)
-    public void jsonRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
+    public void tinyJsonRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
 
-        for (int i = 0; i < plan.getJsons().size(); i++) {
-            byte[] bytes = plan.getJsons().get(i);
+        for (int i = 0; i < plan.getTinyJsons().size(); i++) {
+            byte[] bytes = plan.getTinyJsons().get(i);
             Sport sport = plan.getMapper().readValue(bytes, Sport.class);
 
             blackhole.consume(sport);
         }
     }
-    
+
+    //*****************************************************************************************************************
+    //*****************************************************************************************************************
+    //*****************************************************************************************************************
+    //*****************************************************************************************************************
+
+
+
+    @Benchmark
+    @BenchmarkMode(Mode.Throughput)
+    @OutputTimeUnit(TimeUnit.SECONDS)
+    public void bigJsonWrite(ExecutionPlan plan, Blackhole blackhole) throws JsonProcessingException {
+
+        for (int i = 0; i < plan.getBigObjects().size(); i++) {
+            Event event = plan.getBigObjects().get(i);
+            String json = plan.getMapper().writeValueAsString(event);
+
+            blackhole.consume(json);
+        }
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.Throughput)
+    @OutputTimeUnit(TimeUnit.SECONDS)
+    public void bigJsonRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
+
+        for (int i = 0; i < plan.getBigJsons().size(); i++) {
+            byte[] bytes = plan.getBigJsons().get(i);
+            Event event = plan.getMapper().readValue(bytes, Event.class);
+
+            blackhole.consume(event);
+        }
+    }
 }

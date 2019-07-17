@@ -1,5 +1,8 @@
 package com.sergeyvolkodav;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,6 +10,12 @@ import java.util.Random;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sergeyvolkodav.model.Event;
+import com.sergeyvolkodav.model.EventParticipant;
+import com.sergeyvolkodav.model.Market;
+import com.sergeyvolkodav.model.Price;
+import com.sergeyvolkodav.model.Runner;
+import com.sergeyvolkodav.model.Sport;
 import org.openjdk.jmh.annotations.Level;
 import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
@@ -17,39 +26,155 @@ import org.openjdk.jmh.annotations.State;
 public class ExecutionPlan {
 
     //Raw input is preferable over String
-    private List<byte[]> jsons;
-    private List<Sport> sports;
+    private List<byte[]> tinyJsons;
+    private List<Sport> tinyObjects;
+
+    //Raw input is preferable over String
+    private List<byte[]> bigJsons;
+    private List<Event> bigObjects;
+
     private ObjectMapper mapper;
     private JsonFactory factory;
 
 
-    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
+    @Param({"10", "100", "1000", "10000", "100000"})
     int arraySize;
 
     @Setup(Level.Iteration)
     public void setUp() throws JsonProcessingException {
-        jsons = new ArrayList<>();
-        sports = new ArrayList<>();
+        tinyJsons = new ArrayList<>();
+        tinyObjects = new ArrayList<>();
         mapper = new ObjectMapper();
         factory = new JsonFactory();
 
+        populateTinyObjects();
+        populateBigObjects();
+    }
+
+    public static void main(String[] args) throws JsonProcessingException {
+        ExecutionPlan executionPlan = new ExecutionPlan();
+        executionPlan.arraySize = 1;
+
+        executionPlan.setUp();
+    }
+
+    private void populateBigObjects() throws JsonProcessingException {
+        Random random = new Random();
+        for (int i = 0; i < arraySize; i++) {
+            Event event = new Event();
+            event.setId(random.nextLong());
+            event.setName(java.util.UUID.randomUUID().toString());
+            event.setStartTime(Instant.now());
+            event.setInRunning(true);
+            event.setCategoryIds(new Random().longs(10, 1, 4)
+                    .boxed()
+                    .toArray(Long[]::new));
+            event.setSportId(random.nextLong());
+            event.setAllowLiveBetting(true);
+            event.setMarkets(buildMarket(5));
+            event.setEventParticipants(buildEventParticipant(20));
+
+
+            bigObjects.add(event);
+            bigJsons.add(mapper.writeValueAsBytes(event));
+        }
+    }
+
+    private List<Market> buildMarket(int size) {
+        Random random = new Random();
+        List<Market> markets = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            Market market = new Market();
+            market.setId(random.nextLong());
+            market.setAllowLiveBetting(true);
+            market.setEventId(random.nextLong());
+            market.setInRunning(false);
+            market.setName(java.util.UUID.randomUUID().toString());
+            market.setValue(random.nextDouble());
+            market.setWinners(2);
+            market.setRunners(buildRunners(20));
+
+            markets.add(market);
+        }
+        return markets;
+    }
+
+    private List<Runner> buildRunners(int size) {
+        Random random = new Random();
+        List<Runner> runners = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            Runner runner = new Runner();
+            runner.setEventId(random.nextLong());
+            runner.setEventParticipantId(random.nextLong());
+            runner.setId(random.nextLong());
+            runner.setMarketId(random.nextLong());
+            runner.setName(java.util.UUID.randomUUID().toString());
+            runner.setWithdrawn(false);
+            runner.setValue(random.nextDouble());
+            runner.setPrices(buildPrices(5));
+
+            runners.add(runner);
+        }
+        return runners;
+    }
+
+    private List<Price> buildPrices(int size) {
+        Random random = new Random();
+        List<Price> prices = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            Price price = new Price();
+            price.setAmount(new BigDecimal(random.nextDouble(), MathContext.DECIMAL64));
+            price.setOdds(new BigDecimal(random.nextDouble(), MathContext.DECIMAL64));
+
+            prices.add(price);
+        }
+        return prices;
+    }
+
+    private List<EventParticipant> buildEventParticipant(int size) {
+        Random random = new Random();
+        List<EventParticipant> eventParticipants = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            EventParticipant eventParticipant = new EventParticipant();
+            eventParticipant.setEventId(random.nextLong());
+            eventParticipant.setId(random.nextLong());
+            eventParticipant.setNumber(random.nextInt());
+            eventParticipant.setJockeyName(java.util.UUID.randomUUID().toString());
+            eventParticipant.setTrainerName(java.util.UUID.randomUUID().toString());
+            eventParticipant.setParticipantName(java.util.UUID.randomUUID().toString());
+
+            eventParticipants.add(eventParticipant);
+        }
+        return eventParticipants;
+    }
+
+
+    private void populateTinyObjects() throws JsonProcessingException {
         Random random = new Random();
         for (int i = 0; i < arraySize; i++) {
             Sport sport = new Sport();
             sport.setId(random.nextLong());
             sport.setName(java.util.UUID.randomUUID().toString());
 
-            sports.add(sport);
-            jsons.add(mapper.writeValueAsBytes(sport));
+            tinyObjects.add(sport);
+            tinyJsons.add(mapper.writeValueAsBytes(sport));
         }
     }
 
-    public List<byte[]> getJsons() {
-        return jsons;
+    public List<byte[]> getTinyJsons() {
+        return tinyJsons;
     }
 
-    public List<Sport> getSports() {
-        return sports;
+    public List<Sport> getTinyObjects() {
+        return tinyObjects;
+    }
+
+    public List<byte[]> getBigJsons() {
+        return bigJsons;
+    }
+
+    public List<Event> getBigObjects() {
+        return bigObjects;
     }
 
     public ObjectMapper getMapper() {
