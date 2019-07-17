@@ -16,7 +16,8 @@ import org.openjdk.jmh.annotations.State;
 @State(Scope.Benchmark)
 public class ExecutionPlan {
 
-    private List<String> jsons;
+    //Raw input is preferable over String
+    private List<byte[]> jsons;
     private List<Sport> sports;
     private ObjectMapper mapper;
     private JsonFactory factory;
@@ -39,11 +40,11 @@ public class ExecutionPlan {
             sport.setName(java.util.UUID.randomUUID().toString());
 
             sports.add(sport);
-            jsons.add(mapper.writeValueAsString(sport));
+            jsons.add(mapper.writeValueAsBytes(sport));
         }
     }
 
-    public List<String> getJsons() {
+    public List<byte[]> getJsons() {
         return jsons;
     }
 

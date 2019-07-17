@@ -30,10 +30,10 @@ public class JacksonBenchmark {
     public void jacksonStreamRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
 
         for (int i = 0; i < plan.getJsons().size(); i++) {
-            String json = plan.getJsons().get(i);
+            byte[] bytes = plan.getJsons().get(i);
             Sport sport = new Sport();
             try (JsonParser parser = plan.getFactory()
-                    .createParser(json)) {
+                    .createParser(bytes)) {
                 while (parser.nextToken() != JsonToken.END_OBJECT) {
                     String fieldname = parser.getCurrentName();
 
@@ -95,10 +95,11 @@ public class JacksonBenchmark {
     public void jsonRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
 
         for (int i = 0; i < plan.getJsons().size(); i++) {
-            String json = plan.getJsons().get(i);
-            Sport sport = plan.getMapper().readValue(json, Sport.class);
+            byte[] bytes = plan.getJsons().get(i);
+            Sport sport = plan.getMapper().readValue(bytes, Sport.class);
 
             blackhole.consume(sport);
         }
     }
+    
 }
