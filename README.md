@@ -1,3 +1,6 @@
+[![CircleCI](https://circleci.com/gh/volkodavs/jackson-benchmark.svg?style=svg)](https://circleci.com/gh/volkodavs/jackson-benchmark)
+
+
 # Java Filter Benchmarks
 
 ## Introduction
