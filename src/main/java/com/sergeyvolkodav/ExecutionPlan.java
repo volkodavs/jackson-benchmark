@@ -37,7 +37,7 @@ public class ExecutionPlan {
     private JsonFactory factory;
 
 
-    @Param({"10", "100", "1000", "10000", "100000"})
+    @Param({"1000", "10000",  "100000"})
     int arraySize;
 
     @Setup(Level.Iteration)
@@ -77,7 +77,6 @@ public class ExecutionPlan {
             event.setAllowLiveBetting(true);
             event.setMarkets(buildMarket(5));
             event.setEventParticipants(buildEventParticipant(20));
-
 
             bigObjects.add(event);
             bigJsons.add(mapper.writeValueAsBytes(event));

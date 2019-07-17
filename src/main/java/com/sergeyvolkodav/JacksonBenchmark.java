@@ -128,12 +128,23 @@ public class JacksonBenchmark {
 
             try (JsonParser parser = plan.getFactory()
                     .createParser(bytes)) {
+
                 while (parser.nextToken() != JsonToken.END_OBJECT) {
                     String fieldname = parser.getCurrentName();
 
+                    if (Objects.isNull(fieldname)) {
+                    } else if (fieldname.equals("id")) {
+                        parser.nextToken();
+                        event.setId(parser.getLongValue());
+                    } else if (fieldname.equals("name")) {
+                        parser.nextToken();
+                        event.setName(parser.getText());
+                    }else if (fieldname.equals("sportId")){
+                        parser.nextToken();
+                        event.setSportId(parser.getLongValue());
+                    }
                 }
             }
-
             blackhole.consume(event);
         }
     }
