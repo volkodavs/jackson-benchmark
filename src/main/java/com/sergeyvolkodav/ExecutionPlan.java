@@ -44,6 +44,9 @@ public class ExecutionPlan {
     public void setUp() throws JsonProcessingException {
         tinyJsons = new ArrayList<>();
         tinyObjects = new ArrayList<>();
+        bigJsons = new ArrayList<>();
+        bigObjects = new ArrayList<>();
+
         mapper = new ObjectMapper();
         factory = new JsonFactory();
 
@@ -66,9 +69,10 @@ public class ExecutionPlan {
             event.setName(java.util.UUID.randomUUID().toString());
             event.setStartTime(Instant.now());
             event.setInRunning(true);
-            event.setCategoryIds(new Random().longs(10, 1, 4)
-                    .boxed()
-                    .toArray(Long[]::new));
+            event.setCategoryIds(new Random().longs(10,
+                    1,
+                    4)
+                    .toArray());
             event.setSportId(random.nextLong());
             event.setAllowLiveBetting(true);
             event.setMarkets(buildMarket(5));

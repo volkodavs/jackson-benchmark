@@ -9,7 +9,7 @@ public class Event {
 
     private Long id;
     private Long sportId;
-    private Long[] categoryIds;
+    private long[] categoryIds;
     private String name;
     private Instant startTime;
     private boolean inRunning;
@@ -38,11 +38,11 @@ public class Event {
         this.sportId = sportId;
     }
 
-    public Long[] getCategoryIds() {
+    public long[] getCategoryIds() {
         return categoryIds;
     }
 
-    public void setCategoryIds(Long[] categoryIds) {
+    public void setCategoryIds(long[] categoryIds) {
         this.categoryIds = categoryIds;
     }
 
