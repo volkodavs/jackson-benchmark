@@ -1,6 +1,6 @@
 package com.sergeyvolkodav;
 
-public class Event {
+public class Sport {
 
     private Long id;
     private String name;
@@ -23,7 +23,7 @@ public class Event {
 
     @Override
     public String toString() {
-        return Event.class.getSimpleName() + " {" +
+        return Sport.class.getSimpleName() + " {" +
                 "id=" + id +
                 ", name=" + name +
                 "}";

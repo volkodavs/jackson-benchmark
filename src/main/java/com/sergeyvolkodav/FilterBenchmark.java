@@ -8,7 +8,6 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import com.fasterxml.jackson.core.JsonEncoding;
-import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -32,50 +31,46 @@ public class FilterBenchmark {
 
         for (int i = 0; i < plan.getJsons().size(); i++) {
             String json = plan.getJsons().get(i);
-            Event event = new Event();
-            try (JsonParser parser = new JsonFactory()
+            Sport sport = new Sport();
+            try (JsonParser parser = plan.getFactory()
                     .createParser(json)) {
                 while (parser.nextToken() != JsonToken.END_OBJECT) {
                     String fieldname = parser.getCurrentName();
 
                     if (Objects.isNull(fieldname)) {
-                        continue;
-                    }
-                    if (fieldname.equals("id")) {
+                    } else if (fieldname.equals("id")) {
                         parser.nextToken();
-                        event.setId(parser.getLongValue());
-                        continue;
-                    }
-                    if (fieldname.equals("name")) {
+                        sport.setId(parser.getLongValue());
+                    } else if (fieldname.equals("name")) {
                         parser.nextToken();
-                        event.setName(parser.getText());
+                        sport.setName(parser.getText());
                     }
                 }
             }
-            blackhole.consume(event);
+            blackhole.consume(sport);
         }
     }
-
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.SECONDS)
     public void jacksonStreamWrite(ExecutionPlan plan, Blackhole blackhole) throws IOException {
         for (int i = 0; i < plan.getJsons().size(); i++) {
-            Event event = plan.getEvents().get(i);
+            Sport sport = plan.getSports().get(i);
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             try (JsonGenerator generator =
-                    plan.getMapper().getFactory().createGenerator(
+                    plan.getFactory().createGenerator(
                             outputStream, JsonEncoding.UTF8)) {
                 generator.writeStartObject();
 
-                generator.writeNumberField("id", event.getId());
-                generator.writeStringField("name", event.getName());
+                generator.writeNumberField("id", sport.getId());
+                generator.writeStringField("name", sport.getName());
 
                 generator.writeEndObject();
+            } finally {
+                outputStream.close();
             }
-            outputStream.close();
 
             blackhole.consume(outputStream.toString());
         }
@@ -87,8 +82,8 @@ public class FilterBenchmark {
     public void jsonWrite(ExecutionPlan plan, Blackhole blackhole) throws JsonProcessingException {
 
         for (int i = 0; i < plan.getJsons().size(); i++) {
-            Event event = plan.getEvents().get(i);
-            String json = plan.getMapper().writeValueAsString(event);
+            Sport sport = plan.getSports().get(i);
+            String json = plan.getMapper().writeValueAsString(sport);
 
             blackhole.consume(json);
         }
@@ -101,9 +96,9 @@ public class FilterBenchmark {
 
         for (int i = 0; i < plan.getJsons().size(); i++) {
             String json = plan.getJsons().get(i);
-            Event event = plan.getMapper().readValue(json, Event.class);
+            Sport sport = plan.getMapper().readValue(json, Sport.class);
 
-            blackhole.consume(event);
+            blackhole.consume(sport);
         }
     }
 }

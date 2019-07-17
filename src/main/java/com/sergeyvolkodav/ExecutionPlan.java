@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.openjdk.jmh.annotations.Level;
@@ -15,25 +16,31 @@ import org.openjdk.jmh.annotations.State;
 @State(Scope.Benchmark)
 public class ExecutionPlan {
 
-    private List<String> jsons = new ArrayList<>();
-    private List<Event> events = new ArrayList<>();
+    private List<String> jsons;
+    private List<Sport> sports;
+    private ObjectMapper mapper;
+    private JsonFactory factory;
 
-    private ObjectMapper mapper = new ObjectMapper();
 
-
-    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
+    //    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
+    @Param({"1000"})
     int arraySize;
 
     @Setup(Level.Iteration)
     public void setUp() throws JsonProcessingException {
+        jsons = new ArrayList<>();
+        sports = new ArrayList<>();
+        mapper = new ObjectMapper();
+        factory = new JsonFactory();
+
         Random random = new Random();
         for (int i = 0; i < arraySize; i++) {
-            Event event = new Event();
-            event.setId(random.nextLong());
-            event.setName(java.util.UUID.randomUUID().toString());
+            Sport sport = new Sport();
+            sport.setId(random.nextLong());
+            sport.setName(java.util.UUID.randomUUID().toString());
 
-            events.add(event);
-            jsons.add(mapper.writeValueAsString(event));
+            sports.add(sport);
+            jsons.add(mapper.writeValueAsString(sport));
         }
     }
 
@@ -41,11 +48,15 @@ public class ExecutionPlan {
         return jsons;
     }
 
-    public List<Event> getEvents() {
-        return events;
+    public List<Sport> getSports() {
+        return sports;
     }
 
     public ObjectMapper getMapper() {
         return mapper;
+    }
+
+    public JsonFactory getFactory() {
+        return factory;
     }
 }
