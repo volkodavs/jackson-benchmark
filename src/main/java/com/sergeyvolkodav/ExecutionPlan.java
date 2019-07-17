@@ -22,8 +22,7 @@ public class ExecutionPlan {
     private JsonFactory factory;
 
 
-    //    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
-    @Param({"1000"})
+    @Param({"10", "100", "1000", "10000", "100000", "1000000"})
     int arraySize;
 
     @Setup(Level.Iteration)

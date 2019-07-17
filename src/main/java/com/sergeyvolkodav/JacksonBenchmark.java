@@ -22,7 +22,7 @@ import org.openjdk.jmh.infra.Blackhole;
 
 @Warmup(iterations = 10)
 @Measurement(iterations = 10, time = 1, timeUnit = SECONDS)
-public class FilterBenchmark {
+public class JacksonBenchmark {
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
@@ -47,6 +47,7 @@ public class FilterBenchmark {
                     }
                 }
             }
+
             blackhole.consume(sport);
         }
     }
@@ -55,6 +56,7 @@ public class FilterBenchmark {
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.SECONDS)
     public void jacksonStreamWrite(ExecutionPlan plan, Blackhole blackhole) throws IOException {
+
         for (int i = 0; i < plan.getJsons().size(); i++) {
             Sport sport = plan.getSports().get(i);
 
@@ -68,8 +70,6 @@ public class FilterBenchmark {
                 generator.writeStringField("name", sport.getName());
 
                 generator.writeEndObject();
-            } finally {
-                outputStream.close();
             }
 
             blackhole.consume(outputStream.toString());
