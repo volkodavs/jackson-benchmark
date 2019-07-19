@@ -34,8 +34,8 @@ public class ExecutionPlan {
     private JsonFactory factory;
 
 
-    @Param({"1000", "10000", "100000"})
-    int arraySize;
+    @Param({"10000"})
+    private int arraySize;
 
     @Setup(Level.Iteration)
     public void setUp() throws JsonProcessingException {
@@ -50,14 +50,7 @@ public class ExecutionPlan {
         populateTinyObjects();
         populateBigObjects();
     }
-
-    public static void main(String[] args) throws JsonProcessingException {
-        ExecutionPlan executionPlan = new ExecutionPlan();
-        executionPlan.arraySize = 1;
-
-        executionPlan.setUp();
-    }
-
+    
     private void populateBigObjects() throws JsonProcessingException {
         Random random = new Random();
         for (int i = 0; i < arraySize; i++) {
