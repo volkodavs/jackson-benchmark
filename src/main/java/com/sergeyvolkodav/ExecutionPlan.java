@@ -33,8 +33,7 @@ public class ExecutionPlan {
     private ObjectMapper mapper;
     private JsonFactory factory;
 
-
-    @Param({"10000"})
+    @Param({"1000"})
     private int arraySize;
 
     @Setup(Level.Iteration)
@@ -50,7 +49,7 @@ public class ExecutionPlan {
         populateTinyObjects();
         populateBigObjects();
     }
-    
+
     private void populateBigObjects() throws JsonProcessingException {
         Random random = new Random();
         for (int i = 0; i < arraySize; i++) {

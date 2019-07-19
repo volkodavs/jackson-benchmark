@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -38,7 +37,7 @@ public class JacksonBenchmark {
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
+    @OutputTimeUnit(MILLISECONDS)
     public void tinyJacksonStreamRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
 
         for (int i = 0; i < plan.getTinyJsons().size(); i++) {
@@ -66,7 +65,7 @@ public class JacksonBenchmark {
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
+    @OutputTimeUnit(MILLISECONDS)
     public void tinyJacksonStreamWrite(ExecutionPlan plan, Blackhole blackhole) throws IOException {
 
         for (int i = 0; i < plan.getTinyJsons().size(); i++) {
@@ -90,7 +89,7 @@ public class JacksonBenchmark {
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
+    @OutputTimeUnit(MILLISECONDS)
     public void tinyJsonWrite(ExecutionPlan plan, Blackhole blackhole) throws JsonProcessingException {
 
         for (int i = 0; i < plan.getTinyObjects().size(); i++) {
@@ -103,7 +102,7 @@ public class JacksonBenchmark {
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
+    @OutputTimeUnit(MILLISECONDS)
     public void tinyJsonRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
 
         for (int i = 0; i < plan.getTinyJsons().size(); i++) {
@@ -121,7 +120,7 @@ public class JacksonBenchmark {
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
+    @OutputTimeUnit(MILLISECONDS)
     public void bigJacksonStreamRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
 
         for (int i = 0; i < plan.getBigJsons().size(); i++) {
@@ -279,7 +278,7 @@ public class JacksonBenchmark {
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
+    @OutputTimeUnit(MILLISECONDS)
     public void bigJacksonStreamWrite(ExecutionPlan plan, Blackhole blackhole) throws IOException {
 
         for (int i = 0; i < plan.getBigJsons().size(); i++) {
@@ -374,7 +373,7 @@ public class JacksonBenchmark {
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
+    @OutputTimeUnit(MILLISECONDS)
     public void bigJsonWrite(ExecutionPlan plan, Blackhole blackhole) throws JsonProcessingException {
 
         for (int i = 0; i < plan.getBigObjects().size(); i++) {
@@ -387,7 +386,7 @@ public class JacksonBenchmark {
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
+    @OutputTimeUnit(MILLISECONDS)
     public void bigJsonRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
 
         for (int i = 0; i < plan.getBigJsons().size(); i++) {
