@@ -5,6 +5,8 @@
 
 ## Introduction
 
+The idea of the project is to compare Jackson Stream API performance with Jackson Mappers
+
 ### Tiny Object 
 size: 72B
 
@@ -251,14 +253,10 @@ docker run -it volkodav/java-jackson-benchmark:java12
 
 ## Graph
 
-### 10,000 Element Array
-
-
 
 ## Summary 
 
 
-### Comparison tables
 
 
 ## License
