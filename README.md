@@ -1,11 +1,70 @@
 [![CircleCI](https://circleci.com/gh/volkodavs/jackson-benchmark.svg?style=svg)](https://circleci.com/gh/volkodavs/jackson-benchmark)
 
 
-# Java Filter Benchmarks
+# Java Jackson Benchmarks
 
 ## Introduction
 
-### 
+### Tiny Object 
+size: 72B
+
+#### Structure 
+
+```java
+public class Sport{
+
+    Long id;
+    String name;
+}
+```
+
+### Big Object 
+size: 52KB
+
+#### Structure 
+
+```java
+public class Event {
+    Long id;
+    Long sportId;
+    String name;
+    Date startTime;
+    boolean inRunning;
+    boolean allowLiveBetting;
+    List<Market> markets;
+    List<EventParticipant> eventParticipants;
+}
+
+public class Market {
+    Long id;
+    Long eventId;
+    String name;
+    boolean inRunning;
+    boolean allowLiveBetting;
+    Double value;
+    Integer winners;
+    List<Runner> runners;
+}
+
+public class Runner {
+    Long id;
+    Long eventId;
+    Long marketId;
+    Long eventParticipantId;
+    String name;
+    boolean withdrawn;
+    Double value;
+}
+
+public class EventParticipant{
+    Long id;
+    Long eventId;
+    String participantName;
+    String jockeyName;
+    String trainerName;
+    Integer number;
+}
+```
 
 ## Environment 
 
