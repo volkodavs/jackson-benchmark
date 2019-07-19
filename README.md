@@ -12,7 +12,6 @@ size: 72B
 
 ```java
 public class Sport{
-
     Long id;
     String name;
 }
