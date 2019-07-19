@@ -18,7 +18,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <jmh.version>1.21</jmh.version>
-        <jackson.version>2.9.9</jackson.version>
+        <jackson.version>2.9.9.1</jackson.version>
         <javac.target>1.8</javac.target>
         <uberjar.name>benchmarks</uberjar.name>
 
