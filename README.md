@@ -21,6 +21,11 @@ public class Sport{
 ### Big Object 
 size: 52KB
 
+, where 
+10 markets
+20 runners 
+20 event participants
+
 #### Structure 
 
 ```java
