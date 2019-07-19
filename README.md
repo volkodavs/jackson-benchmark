@@ -5,10 +5,12 @@
 
 ## Introduction
 
-The idea of the project is to compare Jackson Stream API performance with Jackson Mappers
+The idea of the project is to compare Jackson Stream API performance with Jackson Mappers. 
+
+* Tiny Object ~ 72B
+* Big Object ~ 52KB
 
 ### Tiny Object 
-size: 72B
 
 #### Structure 
 
@@ -25,8 +27,6 @@ Single event object contains:
 * 10 markets
 * 20 runners 
 * 20 event participants
-
-size: 52KB
 
 #### Structure 
 
