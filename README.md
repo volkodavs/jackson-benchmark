@@ -7,8 +7,8 @@
 
 The idea of the project is to compare Jackson Stream API performance with Jackson Mappers. 
 
-* Tiny JSON  ~ 72B
-* Big JSON ~ 52KB
+* Tiny  ~ 72B
+* Big ~ 52KB
 
 ### Tiny Object 
 
