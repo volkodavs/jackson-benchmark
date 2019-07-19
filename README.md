@@ -79,7 +79,7 @@ Environment
 
 * 8 CPU
 * 64 GB RAM
-* OS version: 16.04.1 LTS (Xenial Xerus)
+* OS version 16.04.1 LTS (Xenial Xerus)
 * Docker version 18.03.0-ce, build 0520e24
 
 ### Java 8
