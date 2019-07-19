@@ -1,6 +1,6 @@
 package com.sergeyvolkodav;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -29,7 +29,7 @@ import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.infra.Blackhole;
 
 @Warmup(iterations = 10)
-@Measurement(iterations = 10, time = 1, timeUnit = SECONDS)
+@Measurement(iterations = 10, time = 1, timeUnit = MILLISECONDS)
 public class JacksonBenchmark {
 
     //*****************************************************************************************************************
