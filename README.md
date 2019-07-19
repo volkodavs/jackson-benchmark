@@ -70,14 +70,14 @@ public class EventParticipant{
     Integer number;
 }
 ```
+ 
+## Benchmarks
 
-## Environment 
+Environment 
 
 * 8 CPU
 * 64 GB RAM
 * OS version: 16.04.1 LTS (Xenial Xerus)
- 
-## Run benchmarks
 
 ### Java 8
 
