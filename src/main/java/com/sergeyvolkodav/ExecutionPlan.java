@@ -14,7 +14,6 @@ import com.sergeyvolkodav.model.Market;
 import com.sergeyvolkodav.model.Runner;
 import com.sergeyvolkodav.model.Sport;
 import org.openjdk.jmh.annotations.Level;
-import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
@@ -23,26 +22,19 @@ import org.openjdk.jmh.annotations.State;
 public class ExecutionPlan {
 
     //Raw input is preferable over String
-    private List<byte[]> tinyJsons;
-    private List<Sport> tinyObjects;
+    private byte[] tinyJsons;
+    private Sport tinyObjects;
 
     //Raw input is preferable over String
-    private List<byte[]> bigJsons;
-    private List<Event> bigObjects;
+    private byte[] bigJsons;
+    private Event bigObjects;
 
     private ObjectMapper mapper;
     private JsonFactory factory;
 
-    @Param({"10000"})
-    private int arraySize;
 
     @Setup(Level.Iteration)
     public void setUp() throws JsonProcessingException {
-        tinyJsons = new ArrayList<>();
-        tinyObjects = new ArrayList<>();
-        bigJsons = new ArrayList<>();
-        bigObjects = new ArrayList<>();
-
         mapper = new ObjectMapper();
         factory = new JsonFactory();
 
@@ -52,20 +44,17 @@ public class ExecutionPlan {
 
     private void populateBigObjects() throws JsonProcessingException {
         Random random = new Random();
-        for (int i = 0; i < arraySize; i++) {
-            Event event = new Event();
-            event.setId(random.nextLong());
-            event.setName(java.util.UUID.randomUUID().toString());
-            event.setStartTime(new Date());
-            event.setInRunning(true);
-            event.setSportId(random.nextLong());
-            event.setAllowLiveBetting(true);
-            event.setMarkets(buildMarket(10));
-            event.setEventParticipants(buildEventParticipant(20));
+        bigObjects = new Event();
+        bigObjects.setId(random.nextLong());
+        bigObjects.setName(java.util.UUID.randomUUID().toString());
+        bigObjects.setStartTime(new Date());
+        bigObjects.setInRunning(true);
+        bigObjects.setSportId(random.nextLong());
+        bigObjects.setAllowLiveBetting(true);
+        bigObjects.setMarkets(buildMarket(10));
+        bigObjects.setEventParticipants(buildEventParticipant(20));
 
-            bigObjects.add(event);
-            bigJsons.add(mapper.writeValueAsBytes(event));
-        }
+        bigJsons = mapper.writeValueAsBytes(bigObjects);
     }
 
     private List<Market> buildMarket(int size) {
@@ -125,29 +114,26 @@ public class ExecutionPlan {
 
     private void populateTinyObjects() throws JsonProcessingException {
         Random random = new Random();
-        for (int i = 0; i < arraySize; i++) {
-            Sport sport = new Sport();
-            sport.setId(random.nextLong());
-            sport.setName(java.util.UUID.randomUUID().toString());
+        tinyObjects = new Sport();
+        tinyObjects.setId(random.nextLong());
+        tinyObjects.setName(java.util.UUID.randomUUID().toString());
 
-            tinyObjects.add(sport);
-            tinyJsons.add(mapper.writeValueAsBytes(sport));
-        }
+        tinyJsons = mapper.writeValueAsBytes(tinyObjects);
     }
 
-    public List<byte[]> getTinyJsons() {
+    public byte[] getTinyJsons() {
         return tinyJsons;
     }
 
-    public List<Sport> getTinyObjects() {
+    public Sport getTinyObjects() {
         return tinyObjects;
     }
 
-    public List<byte[]> getBigJsons() {
+    public byte[] getBigJsons() {
         return bigJsons;
     }
 
-    public List<Event> getBigObjects() {
+    public Event getBigObjects() {
         return bigObjects;
     }
 
