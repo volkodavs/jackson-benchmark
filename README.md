@@ -9,6 +9,9 @@
 
 ## Environment 
 
+* 8 CPU
+* 64 GB RAM
+* OS version: 16.04.1 LTS (Xenial Xerus)
  
 ## Run benchmarks
 
@@ -25,8 +28,8 @@ docker run -it volkodav/java-jackson-benchmark:java8
 # VM version: JDK 1.8.0_222, OpenJDK 64-Bit Server VM, 25.222-b10
 # VM invoker: /usr/local/openjdk-8/bin/java
 # VM options: -XX:+UseG1GC -server -Xmx4096m -Xms4096m
-# Warmup: 10 iterations, 1 ms each
-# Measurement: 10 iterations, 1 ms each
+# Warmup: 10 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
@@ -137,14 +140,42 @@ docker run -it volkodav/java-jackson-benchmark:java11
 # VM version: JDK 11.0.4, OpenJDK 64-Bit Server VM, 11.0.4+11
 # VM invoker: /usr/local/openjdk-11/bin/java
 # VM options: -XX:+UseG1GC -server -Xmx4096m -Xms4096m
-# Warmup: 10 iterations, 1 ms each
-# Measurement: 10 iterations, 1 ms each
+# Warmup: 10 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Throughput, ops/time
 # Benchmark: com.sergeyvolkodav.JacksonBenchmark.bigJacksonStreamRead
 # Parameters: (arraySize = 10000)
+```
 
+#### Raw Results
+
+```
+
+```
+
+### Java 12
+
+```commandline
+docker run -it volkodav/java-jackson-benchmark:java12
+```
+
+
+#### Params
+
+```
+# JMH version: 1.21
+# VM version: JDK 12.0.2, OpenJDK 64-Bit Server VM, 12.0.2+10
+# VM invoker: /usr/java/openjdk-12/bin/java
+# VM options: -XX:+UseG1GC -server -Xmx4096m -Xms4096m
+# Warmup: 10 iterations, 1 s each
+# Measurement: 10 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: com.sergeyvolkodav.JacksonBenchmark.bigJacksonStreamRead
+# Parameters: (arraySize = 10000)
 ```
 
 #### Raw Results
