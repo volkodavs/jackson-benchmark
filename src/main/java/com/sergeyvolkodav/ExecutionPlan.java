@@ -68,7 +68,7 @@ public class ExecutionPlan {
             event.setInRunning(true);
             event.setSportId(random.nextLong());
             event.setAllowLiveBetting(true);
-            event.setMarkets(buildMarket(5));
+            event.setMarkets(buildMarket(10));
             event.setEventParticipants(buildEventParticipant(20));
 
             bigObjects.add(event);
