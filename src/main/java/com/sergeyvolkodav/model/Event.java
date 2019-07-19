@@ -2,16 +2,15 @@ package com.sergeyvolkodav.model;
 
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class Event {
 
     private Long id;
     private Long sportId;
-    private long[] categoryIds;
     private String name;
-    private Instant startTime;
+    private Date startTime;
     private boolean inRunning;
     private boolean allowLiveBetting;
     private List<Market> markets;
@@ -38,14 +37,6 @@ public class Event {
         this.sportId = sportId;
     }
 
-    public long[] getCategoryIds() {
-        return categoryIds;
-    }
-
-    public void setCategoryIds(long[] categoryIds) {
-        this.categoryIds = categoryIds;
-    }
-
     public String getName() {
         return name;
     }
@@ -54,11 +45,11 @@ public class Event {
         this.name = name;
     }
 
-    public Instant getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Instant startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
@@ -99,7 +90,6 @@ public class Event {
         return Event.class.getSimpleName() + " {" +
                 "id=" + id +
                 ", sportId=" + sportId +
-                ", categoryIds=" + Arrays.toString(categoryIds) +
                 ", name=" + name +
                 ", startTime=" + startTime +
                 ", inRunning=" + inRunning +

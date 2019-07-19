@@ -4,6 +4,9 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -15,7 +18,6 @@ import com.fasterxml.jackson.core.JsonToken;
 import com.sergeyvolkodav.model.Event;
 import com.sergeyvolkodav.model.EventParticipant;
 import com.sergeyvolkodav.model.Market;
-import com.sergeyvolkodav.model.Price;
 import com.sergeyvolkodav.model.Runner;
 import com.sergeyvolkodav.model.Sport;
 import org.openjdk.jmh.annotations.Benchmark;
@@ -123,30 +125,156 @@ public class JacksonBenchmark {
     public void bigJacksonStreamRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
 
         for (int i = 0; i < plan.getBigJsons().size(); i++) {
-            byte[] bytes = plan.getTinyJsons().get(i);
+            byte[] bytes = plan.getBigJsons().get(i);
             Event event = new Event();
 
             try (JsonParser parser = plan.getFactory()
                     .createParser(bytes)) {
-
                 while (parser.nextToken() != JsonToken.END_OBJECT) {
-                    String fieldname = parser.getCurrentName();
+                    String eventFieldName = parser.getCurrentName();
 
-                    if (Objects.isNull(fieldname)) {
-                    } else if (fieldname.equals("id")) {
+                    if (Objects.isNull(eventFieldName)) {
+                        //do nothing
+                    } else if (eventFieldName.equals("id")) {
                         parser.nextToken();
                         event.setId(parser.getLongValue());
-                    } else if (fieldname.equals("name")) {
+                    } else if (eventFieldName.equals("name")) {
                         parser.nextToken();
                         event.setName(parser.getText());
-                    }else if (fieldname.equals("sportId")){
+                    } else if (eventFieldName.equals("sportId")) {
                         parser.nextToken();
                         event.setSportId(parser.getLongValue());
+                    } else if (eventFieldName.equals("inRunning")) {
+                        parser.nextToken();
+                        event.setInRunning(parser.getBooleanValue());
+                    } else if (eventFieldName.equals("allowLiveBetting")) {
+                        parser.nextToken();
+                        event.setInRunning(parser.getBooleanValue());
+                    } else if (eventFieldName.equals("startTime")) {
+                        parser.nextToken();
+                        event.setStartTime(new Date(parser.getLongValue()));
+                    } else if (eventFieldName.equals("markets")) {
+                        event.setMarkets(parseMarkets(parser));
+                    } else if (eventFieldName.equals("eventParticipants")) {
+                        event.setEventParticipants(parseEventParticipant(parser));
                     }
                 }
             }
             blackhole.consume(event);
         }
+    }
+
+    private static List<Market> parseMarkets(JsonParser parser) throws IOException {
+        List<Market> markets = new ArrayList<>();
+        if (parser.nextToken() == JsonToken.START_ARRAY) {
+            while (parser.nextToken() != JsonToken.END_ARRAY) {
+                Market market = new Market();
+                while (parser.nextToken() != JsonToken.END_OBJECT) {
+                    String marketFieldName = parser.getCurrentName();
+
+                    if (marketFieldName.equals("id")) {
+                        parser.nextToken();
+                        market.setId(parser.getLongValue());
+                    } else if (marketFieldName.equals("eventId")) {
+                        parser.nextToken();
+                        market.setEventId(parser.getLongValue());
+                    } else if (marketFieldName.equals("name")) {
+                        parser.nextToken();
+                        market.setName(parser.getText());
+                    } else if (marketFieldName.equals("inRunning")) {
+                        parser.nextToken();
+                        market.setInRunning(parser.getBooleanValue());
+                    } else if (marketFieldName.equals("allowLiveBetting")) {
+                        parser.nextToken();
+                        market.setAllowLiveBetting(parser.getBooleanValue());
+                    } else if (marketFieldName.equals("winners")) {
+                        parser.nextToken();
+                        market.setWinners(parser.getIntValue());
+                    } else if (marketFieldName.equals("value")) {
+                        parser.nextToken();
+                        market.setValue(parser.getDoubleValue());
+                    } else if (marketFieldName.equals("runners")) {
+                        market.setRunners(parseRunner(parser));
+                    }
+                }
+                markets.add(market);
+            }
+        }
+        return markets;
+    }
+
+    private static List<EventParticipant> parseEventParticipant(JsonParser parser) throws IOException {
+        List<EventParticipant> eventParticipants = new ArrayList<>();
+
+        if (parser.nextToken() == JsonToken.START_ARRAY) {
+
+            while (parser.nextToken() != JsonToken.END_ARRAY) {
+                EventParticipant eventParticipant = new EventParticipant();
+                while (parser.nextToken() != JsonToken.END_OBJECT) {
+                    String participantFieldName = parser.getCurrentName();
+
+                    if (participantFieldName.equals("id")) {
+                        parser.nextToken();
+                        eventParticipant.setId(parser.getLongValue());
+                    } else if (participantFieldName.equals("eventId")) {
+                        parser.nextToken();
+                        eventParticipant.setEventId(parser.getLongValue());
+                    } else if (participantFieldName.equals("participantName")) {
+                        parser.nextToken();
+                        eventParticipant.setParticipantName(parser.getText());
+                    } else if (participantFieldName.equals("jockeyName")) {
+                        parser.nextToken();
+                        eventParticipant.setJockeyName(parser.getText());
+                    } else if (participantFieldName.equals("trainerName")) {
+                        parser.nextToken();
+                        eventParticipant.setTrainerName(parser.getText());
+                    } else if (participantFieldName.equals("number")) {
+                        parser.nextToken();
+                        eventParticipant.setNumber(parser.getIntValue());
+                    }
+                }
+                eventParticipants.add(eventParticipant);
+            }
+        }
+        return eventParticipants;
+    }
+
+    private static List<Runner> parseRunner(JsonParser parser) throws IOException {
+        List<Runner> runners = new ArrayList<>();
+        if (parser.nextToken() == JsonToken.START_ARRAY) {
+
+            while (parser.nextToken() != JsonToken.END_ARRAY) {
+                Runner runner = new Runner();
+                while (parser.nextToken() != JsonToken.END_OBJECT) {
+                    String currentName = parser.getCurrentName();
+
+                    if (currentName.equals("id")) {
+                        parser.nextToken();
+                        runner.setId(parser.getLongValue());
+                    } else if (currentName.equals("eventId")) {
+                        parser.nextToken();
+                        runner.setEventId(parser.getLongValue());
+                    } else if (currentName.equals("marketId")) {
+                        parser.nextToken();
+                        runner.setMarketId(parser.getLongValue());
+                    } else if (currentName.equals("eventParticipantId")) {
+                        parser.nextToken();
+                        runner.setEventParticipantId(parser.getLongValue());
+                    } else if (currentName.equals("name")) {
+                        parser.nextToken();
+                        runner.setName(parser.getText());
+                    } else if (currentName.equals("withdrawn")) {
+                        parser.nextToken();
+                        runner.setWithdrawn(parser.getBooleanValue());
+                    } else if (currentName.equals("value")) {
+                        parser.nextToken();
+                        runner.setValue(parser.getDoubleValue());
+                    }
+                }
+                runners.add(runner);
+            }
+        }
+        return runners;
     }
 
     @Benchmark
@@ -166,9 +294,6 @@ public class JacksonBenchmark {
 
                 generator.writeNumberField("id", event.getId());
                 generator.writeNumberField("sportId", event.getSportId());
-                generator.writeArrayFieldStart("categoryIds");
-                generator.writeArray(event.getCategoryIds(), 0, event.getCategoryIds().length);
-                generator.writeEndArray();
 
                 generator.writeStringField("name", event.getName());
                 generator.writeStringField("inRunning", String.valueOf(event.isInRunning()));
@@ -222,26 +347,11 @@ public class JacksonBenchmark {
             generator.writeStringField("withdrawn", String.valueOf(runner.isWithdrawn()));
             generator.writeNumberField("value", runner.getValue());
 
-            buildPrices(generator, runner);
-
             generator.writeEndObject();
         }
         generator.writeEndArray();
     }
 
-    private static void buildPrices(JsonGenerator generator, Runner runner) throws IOException {
-        generator.writeFieldName("prices");
-        generator.writeStartArray();
-        for (int k = 0; k < runner.getPrices().size(); k++) {
-            Price price = runner.getPrices().get(k);
-
-            generator.writeStartObject();
-            generator.writeStringField("amount", price.getAmount().toString());
-            generator.writeStringField("odds", price.getAmount().toString());
-            generator.writeEndObject();
-        }
-        generator.writeEndArray();
-    }
 
     private static void buildEventParticipant(Event event, JsonGenerator generator) throws IOException {
         generator.writeFieldName("eventParticipants");

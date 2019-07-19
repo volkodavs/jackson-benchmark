@@ -1,9 +1,7 @@
 package com.sergeyvolkodav.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Runner {
+
     private Long id;
     private Long eventId;
     private Long marketId;
@@ -11,11 +9,6 @@ public class Runner {
     private String name;
     private boolean withdrawn;
     private Double value;
-    private List<Price> prices;
-
-    public Runner() {
-        prices = new ArrayList<>();
-    }
 
     public Long getId() {
         return id;
@@ -73,14 +66,6 @@ public class Runner {
         this.value = value;
     }
 
-    public List<Price> getPrices() {
-        return prices;
-    }
-
-    public void setPrices(List<Price> prices) {
-        this.prices = prices;
-    }
-
     @Override
     public String toString() {
         return Runner.class.getSimpleName() + " {" +
@@ -91,7 +76,6 @@ public class Runner {
                 ", name=" + name +
                 ", withdrawn=" + withdrawn +
                 ", value=" + value +
-                ", prices=" + prices +
                 "}";
     }
 }

@@ -1,9 +1,7 @@
 package com.sergeyvolkodav;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -13,7 +11,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sergeyvolkodav.model.Event;
 import com.sergeyvolkodav.model.EventParticipant;
 import com.sergeyvolkodav.model.Market;
-import com.sergeyvolkodav.model.Price;
 import com.sergeyvolkodav.model.Runner;
 import com.sergeyvolkodav.model.Sport;
 import org.openjdk.jmh.annotations.Level;
@@ -37,7 +34,7 @@ public class ExecutionPlan {
     private JsonFactory factory;
 
 
-    @Param({"1000", "10000",  "100000"})
+    @Param({"1000", "10000", "100000"})
     int arraySize;
 
     @Setup(Level.Iteration)
@@ -67,12 +64,8 @@ public class ExecutionPlan {
             Event event = new Event();
             event.setId(random.nextLong());
             event.setName(java.util.UUID.randomUUID().toString());
-            event.setStartTime(Instant.now());
+            event.setStartTime(new Date());
             event.setInRunning(true);
-            event.setCategoryIds(new Random().longs(10,
-                    1,
-                    4)
-                    .toArray());
             event.setSportId(random.nextLong());
             event.setAllowLiveBetting(true);
             event.setMarkets(buildMarket(5));
@@ -114,24 +107,10 @@ public class ExecutionPlan {
             runner.setName(java.util.UUID.randomUUID().toString());
             runner.setWithdrawn(false);
             runner.setValue(random.nextDouble());
-            runner.setPrices(buildPrices(5));
 
             runners.add(runner);
         }
         return runners;
-    }
-
-    private List<Price> buildPrices(int size) {
-        Random random = new Random();
-        List<Price> prices = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            Price price = new Price();
-            price.setAmount(new BigDecimal(random.nextDouble(), MathContext.DECIMAL64));
-            price.setOdds(new BigDecimal(random.nextDouble(), MathContext.DECIMAL64));
-
-            prices.add(price);
-        }
-        return prices;
     }
 
     private List<EventParticipant> buildEventParticipant(int size) {
