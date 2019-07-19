@@ -28,7 +28,7 @@ import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.infra.Blackhole;
 
-@Warmup(iterations = 10, time = 1, timeUnit = MILLISECONDS)
+@Warmup(iterations = 10, time = 1, timeUnit = SECONDS)
 @Measurement(iterations = 10, time = 1, timeUnit = SECONDS)
 public class JacksonBenchmark {
 
