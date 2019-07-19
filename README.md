@@ -22,9 +22,9 @@ public class Sport{
 size: 52KB
 
 , where 
-10 markets
-20 runners 
-20 event participants
+* 10 markets
+* 20 runners 
+* 20 event participants
 
 #### Structure 
 
