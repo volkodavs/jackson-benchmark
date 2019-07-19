@@ -7,10 +7,10 @@
 
 The idea of the project is to compare Jackson Stream API performance with Jackson Mappers. 
 
-* Tiny Object ~ 72B
-* Big Object ~ 52KB
+* Tiny  ~ 72B
+* Big ~ 52KB
 
-### Tiny Object 
+### Tiny 
 
 #### Structure 
 
@@ -21,7 +21,7 @@ public class Sport{
 }
 ```
 
-### Big Object 
+### Big 
 
 Single event object contains: 
 * 10 markets
