@@ -33,7 +33,7 @@ public class ExecutionPlan {
     private ObjectMapper mapper;
     private JsonFactory factory;
 
-    @Param({"100"})
+    @Param({"10000"})
     private int arraySize;
 
     @Setup(Level.Iteration)
