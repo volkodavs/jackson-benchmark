@@ -21,7 +21,7 @@ public class Sport{
 ### Big Object 
 size: 52KB
 
-, where 
+Single event object contains: 
 * 10 markets
 * 20 runners 
 * 20 event participants
