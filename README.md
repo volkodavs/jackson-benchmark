@@ -392,7 +392,7 @@ JacksonBenchmark.tinyJsonWrite:·gc.time                               thrpt   5
 # Run complete. Total time: 02:20:33
 ```
 
-## Diagrams 
+## Results  
 
 ### Plain object 
 <img width="518" alt="Plain object" src="https://user-images.githubusercontent.com/4140597/61590467-c984de80-abb1-11e9-8912-6780bcf7954a.png">
