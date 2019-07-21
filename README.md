@@ -7,8 +7,8 @@
 
 The idea of the project is to compare Jackson Stream API performance with Jackson Mappers. 
 
-* Tiny  ~ 72B
-* Big ~ 52KB
+* Plain  ~ 72B
+* Complex ~ 52KB
 
 ### Tiny 
 
@@ -391,11 +391,15 @@ JacksonBenchmark.tinyJsonWrite:·gc.time                               thrpt   5
 # Run complete. Total time: 02:20:33
 ```
 
-## Graph
+## Diagrams 
 
+### Plain object 
+<img width="518" alt="Plain object" src="https://user-images.githubusercontent.com/4140597/61590467-c984de80-abb1-11e9-8912-6780bcf7954a.png">
+
+### Complex object 
+<img width="511" alt="Complex object" src="https://user-images.githubusercontent.com/4140597/61590473-d570a080-abb1-11e9-9faf-85f36e322626.png">
 
 ## Summary 
-
 
 
 
