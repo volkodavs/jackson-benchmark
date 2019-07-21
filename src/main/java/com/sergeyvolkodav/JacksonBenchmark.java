@@ -32,6 +32,148 @@ import org.openjdk.jmh.infra.Blackhole;
 @Measurement(iterations = 10, time = 10, timeUnit = SECONDS)
 public class JacksonBenchmark {
 
+    //*****************************************************************************************************************
+    //***************************************   Tiny OBJECT      ******************************************************
+    //*****************************************************************************************************************
+
+    @Benchmark
+    @BenchmarkMode(Mode.Throughput)
+    public void tinyJacksonStreamRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
+        Sport sport = new Sport();
+        try (JsonParser parser = plan.getFactory()
+                .createParser(plan.getTinyJsons())) {
+            while (parser.nextToken() != JsonToken.END_OBJECT) {
+                String fieldname = parser.getCurrentName();
+
+                if (Objects.isNull(fieldname)) {
+                } else if (fieldname.equals("id")) {
+                    parser.nextToken();
+                    sport.setId(parser.getLongValue());
+                } else if (fieldname.equals("name")) {
+                    parser.nextToken();
+                    sport.setName(parser.getText());
+                }
+            }
+        }
+        blackhole.consume(sport);
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.Throughput)
+    public void tinyJacksonStreamWrite(ExecutionPlan plan, Blackhole blackhole) throws IOException {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        try (JsonGenerator generator =
+                plan.getFactory().createGenerator(
+                        outputStream, JsonEncoding.UTF8)) {
+            generator.writeStartObject();
+
+            generator.writeNumberField("id", plan.getTinyObjects().getId());
+            generator.writeStringField("name", plan.getTinyObjects().getName());
+
+            generator.writeEndObject();
+        }
+        blackhole.consume(outputStream);
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.Throughput)
+    public void tinyJsonWrite(ExecutionPlan plan, Blackhole blackhole) throws JsonProcessingException {
+        String json = plan.getMapper().writeValueAsString(plan.getTinyObjects());
+        blackhole.consume(json);
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.Throughput)
+    public void tinyJsonRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
+        Sport sport = plan.getMapper().readValue(plan.getTinyJsons(), Sport.class);
+        blackhole.consume(sport);
+    }
+
+    //*****************************************************************************************************************
+    //***************************************   COMPLEX  OBJECT  ******************************************************
+    //*****************************************************************************************************************
+
+
+    @Benchmark
+    @BenchmarkMode(Mode.Throughput)
+    public void bigJacksonStreamRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
+        Event event = new Event();
+        try (JsonParser parser = plan.getFactory()
+                .createParser(plan.getBigJsons())) {
+            while (parser.nextToken() != JsonToken.END_OBJECT) {
+                String eventFieldName = parser.getCurrentName();
+
+                if (Objects.isNull(eventFieldName)) {
+                    //do nothing
+                } else if (eventFieldName.equals("id")) {
+                    parser.nextToken();
+                    event.setId(parser.getLongValue());
+                } else if (eventFieldName.equals("name")) {
+                    parser.nextToken();
+                    event.setName(parser.getText());
+                } else if (eventFieldName.equals("sportId")) {
+                    parser.nextToken();
+                    event.setSportId(parser.getLongValue());
+                } else if (eventFieldName.equals("inRunning")) {
+                    parser.nextToken();
+                    event.setInRunning(parser.getBooleanValue());
+                } else if (eventFieldName.equals("allowLiveBetting")) {
+                    parser.nextToken();
+                    event.setInRunning(parser.getBooleanValue());
+                } else if (eventFieldName.equals("startTime")) {
+                    parser.nextToken();
+                    event.setStartTime(new Date(parser.getLongValue()));
+                } else if (eventFieldName.equals("markets")) {
+                    event.setMarkets(parseMarkets(parser));
+                } else if (eventFieldName.equals("eventParticipants")) {
+                    event.setEventParticipants(parseEventParticipant(parser));
+                }
+            }
+        }
+        blackhole.consume(event);
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.Throughput)
+    public void bigJacksonStreamWrite(ExecutionPlan plan, Blackhole blackhole) throws IOException {
+        Event bigObjects = plan.getBigObjects();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        try (JsonGenerator generator =
+                plan.getFactory().createGenerator(
+                        outputStream, JsonEncoding.UTF8)) {
+
+            generator.writeStartObject();
+
+            generator.writeNumberField("id", bigObjects.getId());
+            generator.writeNumberField("sportId", bigObjects.getSportId());
+
+            generator.writeStringField("name", bigObjects.getName());
+            generator.writeStringField("inRunning", String.valueOf(bigObjects.isInRunning()));
+            generator.writeStringField("allowLiveBetting", String.valueOf(bigObjects.isAllowLiveBetting()));
+            generator.writeStringField("startTime", bigObjects.getStartTime().toString());
+
+            buildEventParticipant(bigObjects, generator);
+            buildMarkets(bigObjects, generator);
+
+            generator.writeEndObject();
+        }
+        blackhole.consume(outputStream);
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.Throughput)
+    public void bigJsonWrite(ExecutionPlan plan, Blackhole blackhole) throws JsonProcessingException {
+        String json = plan.getMapper().writeValueAsString(plan.getBigObjects());
+        blackhole.consume(json);
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.Throughput)
+    public void bigJsonRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
+        Event event = plan.getMapper().readValue(plan.getBigJsons(), Event.class);
+        blackhole.consume(event);
+    }
+
     private static List<Market> parseMarkets(JsonParser parser) throws IOException {
         List<Market> markets = new ArrayList<>();
         if (parser.nextToken() == JsonToken.START_ARRAY) {
@@ -207,146 +349,4 @@ public class JacksonBenchmark {
         generator.writeEndArray();
     }
 
-
-    //*****************************************************************************************************************
-    //***************************************    SMALL OBJECT    ******************************************************
-    //*****************************************************************************************************************
-
-    @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    public void tinyJacksonStreamRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
-        Sport sport = new Sport();
-        try (JsonParser parser = plan.getFactory()
-                .createParser(plan.getTinyJsons())) {
-            while (parser.nextToken() != JsonToken.END_OBJECT) {
-                String fieldname = parser.getCurrentName();
-
-                if (Objects.isNull(fieldname)) {
-                } else if (fieldname.equals("id")) {
-                    parser.nextToken();
-                    sport.setId(parser.getLongValue());
-                } else if (fieldname.equals("name")) {
-                    parser.nextToken();
-                    sport.setName(parser.getText());
-                }
-            }
-        }
-        blackhole.consume(sport);
-    }
-
-    @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    public void tinyJacksonStreamWrite(ExecutionPlan plan, Blackhole blackhole) throws IOException {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        try (JsonGenerator generator =
-                plan.getFactory().createGenerator(
-                        outputStream, JsonEncoding.UTF8)) {
-            generator.writeStartObject();
-
-            generator.writeNumberField("id", plan.getTinyObjects().getId());
-            generator.writeStringField("name", plan.getTinyObjects().getName());
-
-            generator.writeEndObject();
-        }
-        blackhole.consume(outputStream);
-    }
-
-    @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    public void tinyJsonWrite(ExecutionPlan plan, Blackhole blackhole) throws JsonProcessingException {
-        String json = plan.getMapper().writeValueAsString(plan.getTinyObjects());
-        blackhole.consume(json);
-    }
-
-    @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    public void tinyJsonRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
-        Sport sport = plan.getMapper().readValue(plan.getTinyJsons(), Sport.class);
-        blackhole.consume(sport);
-    }
-
-    //*****************************************************************************************************************
-    //***************************************      BIG OBJECT    ******************************************************
-    //*****************************************************************************************************************
-
-
-    @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    public void bigJacksonStreamRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
-        Event event = new Event();
-        try (JsonParser parser = plan.getFactory()
-                .createParser(plan.getBigJsons())) {
-            while (parser.nextToken() != JsonToken.END_OBJECT) {
-                String eventFieldName = parser.getCurrentName();
-
-                if (Objects.isNull(eventFieldName)) {
-                    //do nothing
-                } else if (eventFieldName.equals("id")) {
-                    parser.nextToken();
-                    event.setId(parser.getLongValue());
-                } else if (eventFieldName.equals("name")) {
-                    parser.nextToken();
-                    event.setName(parser.getText());
-                } else if (eventFieldName.equals("sportId")) {
-                    parser.nextToken();
-                    event.setSportId(parser.getLongValue());
-                } else if (eventFieldName.equals("inRunning")) {
-                    parser.nextToken();
-                    event.setInRunning(parser.getBooleanValue());
-                } else if (eventFieldName.equals("allowLiveBetting")) {
-                    parser.nextToken();
-                    event.setInRunning(parser.getBooleanValue());
-                } else if (eventFieldName.equals("startTime")) {
-                    parser.nextToken();
-                    event.setStartTime(new Date(parser.getLongValue()));
-                } else if (eventFieldName.equals("markets")) {
-                    event.setMarkets(parseMarkets(parser));
-                } else if (eventFieldName.equals("eventParticipants")) {
-                    event.setEventParticipants(parseEventParticipant(parser));
-                }
-            }
-        }
-        blackhole.consume(event);
-    }
-
-    @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    public void bigJacksonStreamWrite(ExecutionPlan plan, Blackhole blackhole) throws IOException {
-        Event bigObjects = plan.getBigObjects();
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        try (JsonGenerator generator =
-                plan.getFactory().createGenerator(
-                        outputStream, JsonEncoding.UTF8)) {
-
-            generator.writeStartObject();
-
-            generator.writeNumberField("id", bigObjects.getId());
-            generator.writeNumberField("sportId", bigObjects.getSportId());
-
-            generator.writeStringField("name", bigObjects.getName());
-            generator.writeStringField("inRunning", String.valueOf(bigObjects.isInRunning()));
-            generator.writeStringField("allowLiveBetting", String.valueOf(bigObjects.isAllowLiveBetting()));
-            generator.writeStringField("startTime", bigObjects.getStartTime().toString());
-
-            buildEventParticipant(bigObjects, generator);
-            buildMarkets(bigObjects, generator);
-
-            generator.writeEndObject();
-        }
-        blackhole.consume(outputStream);
-    }
-
-    @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    public void bigJsonWrite(ExecutionPlan plan, Blackhole blackhole) throws JsonProcessingException {
-        String json = plan.getMapper().writeValueAsString(plan.getBigObjects());
-        blackhole.consume(json);
-    }
-
-    @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    public void bigJsonRead(ExecutionPlan plan, Blackhole blackhole) throws IOException {
-        Event event = plan.getMapper().readValue(plan.getBigJsons(), Event.class);
-        blackhole.consume(event);
-    }
 }
