@@ -61,7 +61,7 @@ public class JacksonBenchmark {
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     public void tinyJacksonStreamWrite(ExecutionPlan plan, Blackhole blackhole) throws IOException {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(100);
         try (JsonGenerator generator =
                 plan.getFactory().createGenerator(
                         outputStream, JsonEncoding.UTF8)) {
@@ -137,7 +137,7 @@ public class JacksonBenchmark {
     @BenchmarkMode(Mode.Throughput)
     public void bigJacksonStreamWrite(ExecutionPlan plan, Blackhole blackhole) throws IOException {
         Event bigObjects = plan.getBigObjects();
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(60_000);
         try (JsonGenerator generator =
                 plan.getFactory().createGenerator(
                         outputStream, JsonEncoding.UTF8)) {
