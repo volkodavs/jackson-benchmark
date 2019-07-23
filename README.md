@@ -106,79 +106,80 @@ docker run -it volkodav/java-jackson-benchmark:java8
 
 ```
 Benchmark                                                              Mode  Cnt        Score       Error   Units
-JacksonBenchmark.bigJacksonStreamRead                                 thrpt   50     2754.665 ±    10.205   ops/s
-JacksonBenchmark.bigJacksonStreamRead:·gc.alloc.rate                  thrpt   50      633.033 ±     2.221  MB/sec
-JacksonBenchmark.bigJacksonStreamRead:·gc.alloc.rate.norm             thrpt   50   253221.715 ±   917.460    B/op
-JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Eden_Space         thrpt   50      635.180 ±    52.435  MB/sec
-JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Eden_Space.norm    thrpt   50   254071.943 ± 20958.210    B/op
-JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Old_Gen            thrpt   50        0.003 ±     0.001  MB/sec
-JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Old_Gen.norm       thrpt   50        1.252 ±     0.454    B/op
-JacksonBenchmark.bigJacksonStreamRead:·gc.count                       thrpt   50      136.000              counts
-JacksonBenchmark.bigJacksonStreamRead:·gc.time                        thrpt   50     1935.000                  ms
-JacksonBenchmark.bigJsonRead                                          thrpt   50     2427.268 ±    16.871   ops/s
-JacksonBenchmark.bigJsonRead:·gc.alloc.rate                           thrpt   50      650.791 ±     4.054  MB/sec
-JacksonBenchmark.bigJsonRead:·gc.alloc.rate.norm                      thrpt   50   295396.877 ±   884.872    B/op
-JacksonBenchmark.bigJsonRead:·gc.churn.G1_Eden_Space                  thrpt   50      649.282 ±    48.376  MB/sec
-JacksonBenchmark.bigJsonRead:·gc.churn.G1_Eden_Space.norm             thrpt   50   294730.195 ± 21983.639    B/op
-JacksonBenchmark.bigJsonRead:·gc.churn.G1_Old_Gen                     thrpt   50        0.004 ±     0.002  MB/sec
-JacksonBenchmark.bigJsonRead:·gc.churn.G1_Old_Gen.norm                thrpt   50        1.969 ±     0.776    B/op
-JacksonBenchmark.bigJsonRead:·gc.count                                thrpt   50      139.000              counts
-JacksonBenchmark.bigJsonRead:·gc.time                                 thrpt   50     2009.000                  ms
-JacksonBenchmark.bigJacksonStreamWrite                                thrpt   50     4292.404 ±    20.830   ops/s
-JacksonBenchmark.bigJacksonStreamWrite:·gc.alloc.rate                 thrpt   50      516.359 ±     2.373  MB/sec
-JacksonBenchmark.bigJacksonStreamWrite:·gc.alloc.rate.norm            thrpt   50   132556.521 ±    91.475    B/op
-JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Eden_Space        thrpt   50      527.744 ±    51.223  MB/sec
-JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Eden_Space.norm   thrpt   50   135444.117 ± 13018.969    B/op
-JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Old_Gen           thrpt   50        0.002 ±     0.001  MB/sec
-JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Old_Gen.norm      thrpt   50        0.491 ±     0.242    B/op
-JacksonBenchmark.bigJacksonStreamWrite:·gc.count                      thrpt   50      113.000              counts
-JacksonBenchmark.bigJacksonStreamWrite:·gc.time                       thrpt   50     1743.000                  ms
-JacksonBenchmark.bigJsonWrite                                         thrpt   50     4388.999 ±    40.128   ops/s
-JacksonBenchmark.bigJsonWrite:·gc.alloc.rate                          thrpt   50      493.077 ±     4.480  MB/sec
-JacksonBenchmark.bigJsonWrite:·gc.alloc.rate.norm                     thrpt   50   123774.600 ±    73.073    B/op
-JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Eden_Space                 thrpt   50      499.753 ±    40.479  MB/sec
-JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Eden_Space.norm            thrpt   50   125411.144 ±  9887.025    B/op
-JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Old_Gen                    thrpt   50        0.002 ±     0.001  MB/sec
-JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Old_Gen.norm               thrpt   50        0.412 ±     0.205    B/op
-JacksonBenchmark.bigJsonWrite:·gc.count                               thrpt   50      107.000              counts
-JacksonBenchmark.bigJsonWrite:·gc.time                                thrpt   50     1635.000                  ms
-JacksonBenchmark.tinyJacksonStreamRead                                thrpt   50  2150609.022 ± 81846.116   ops/s
-JacksonBenchmark.tinyJacksonStreamRead:·gc.alloc.rate                 thrpt   50     1669.648 ±    20.195  MB/sec
-JacksonBenchmark.tinyJacksonStreamRead:·gc.alloc.rate.norm            thrpt   50      858.433 ±    20.404    B/op
-JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Eden_Space        thrpt   50     1672.134 ±    48.841  MB/sec
-JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Eden_Space.norm   thrpt   50      860.018 ±    32.354    B/op
-JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Old_Gen           thrpt   50        0.005 ±     0.001  MB/sec
-JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Old_Gen.norm      thrpt   50        0.002 ±     0.001    B/op
-JacksonBenchmark.tinyJacksonStreamRead:·gc.count                      thrpt   50      358.000              counts
-JacksonBenchmark.tinyJacksonStreamRead:·gc.time                       thrpt   50     4685.000                  ms
-JacksonBenchmark.tinyJsonRead                                         thrpt   50  1823379.967 ± 76225.192   ops/s
-JacksonBenchmark.tinyJsonRead:·gc.alloc.rate                          thrpt   50     1625.880 ±    39.243  MB/sec
-JacksonBenchmark.tinyJsonRead:·gc.alloc.rate.norm                     thrpt   50      985.798 ±    24.089    B/op
-JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Eden_Space                 thrpt   50     1625.438 ±    51.984  MB/sec
-JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Eden_Space.norm            thrpt   50      985.478 ±    31.782    B/op
-JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Old_Gen                    thrpt   50        0.005 ±     0.001  MB/sec
-JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Old_Gen.norm               thrpt   50        0.003 ±     0.001    B/op
-JacksonBenchmark.tinyJsonRead:·gc.count                               thrpt   50      348.000              counts
-JacksonBenchmark.tinyJsonRead:·gc.time                                thrpt   50     4433.000                  ms
-JacksonBenchmark.tinyJacksonStreamWrite                               thrpt   50  3373531.235 ± 29554.721   ops/s
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.alloc.rate                thrpt   50     1258.588 ±    11.033  MB/sec
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.alloc.rate.norm           thrpt   50      411.061 ±     1.942    B/op
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Eden_Space       thrpt   50     1261.135 ±    57.171  MB/sec
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Eden_Space.norm  thrpt   50      411.798 ±    17.876    B/op
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Old_Gen          thrpt   50        0.004 ±     0.001  MB/sec
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Old_Gen.norm     thrpt   50        0.001 ±     0.001    B/op
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.count                     thrpt   50      270.000              counts
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.time                      thrpt   50     3510.000                  ms
-JacksonBenchmark.tinyJsonWrite                                        thrpt   50  2677089.873 ± 37114.170   ops/s
-JacksonBenchmark.tinyJsonWrite:·gc.alloc.rate                         thrpt   50     1428.243 ±    18.559  MB/sec
-JacksonBenchmark.tinyJsonWrite:·gc.alloc.rate.norm                    thrpt   50      587.866 ±     1.999    B/op
-JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Eden_Space                thrpt   50     1429.248 ±    37.952  MB/sec
-JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Eden_Space.norm           thrpt   50      588.379 ±    14.440    B/op
-JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Old_Gen                   thrpt   50        0.004 ±     0.001  MB/sec
-JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Old_Gen.norm              thrpt   50        0.002 ±     0.001    B/op
-JacksonBenchmark.tinyJsonWrite:·gc.count                              thrpt   50      306.000              counts
-JacksonBenchmark.tinyJsonWrite:·gc.time                               thrpt   50     4227.000                  ms
-
+JacksonBenchmark.bigJacksonStreamRead                                    thrpt   50     2783.438 ±     8.696   ops/s
+JacksonBenchmark.bigJacksonStreamRead:·gc.alloc.rate                     thrpt   50      638.612 ±     2.167  MB/sec
+JacksonBenchmark.bigJacksonStreamRead:·gc.alloc.rate.norm                thrpt   50   252808.170 ±   753.372    B/op
+JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Eden_Space            thrpt   50      639.857 ±    51.236  MB/sec
+JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Eden_Space.norm       thrpt   50   253278.471 ± 20224.219    B/op
+JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Old_Gen               thrpt   50        0.004 ±     0.001  MB/sec
+JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Old_Gen.norm          thrpt   50        1.389 ±     0.549    B/op
+JacksonBenchmark.bigJacksonStreamRead:·gc.count                          thrpt   50      137.000              counts
+JacksonBenchmark.bigJacksonStreamRead:·gc.time                           thrpt   50     1881.000                  ms
+JacksonBenchmark.bigJsonRead                                             thrpt   50     2437.580 ±    16.192   ops/s
+JacksonBenchmark.bigJsonRead:·gc.alloc.rate                              thrpt   50      654.186 ±     4.544  MB/sec
+JacksonBenchmark.bigJsonRead:·gc.alloc.rate.norm                         thrpt   50   295676.731 ±   841.686    B/op
+JacksonBenchmark.bigJsonRead:·gc.churn.G1_Eden_Space                     thrpt   50      653.944 ±    46.710  MB/sec
+JacksonBenchmark.bigJsonRead:·gc.churn.G1_Eden_Space.norm                thrpt   50   295640.513 ± 21275.105    B/op
+JacksonBenchmark.bigJsonRead:·gc.churn.G1_Old_Gen                        thrpt   50        0.004 ±     0.002  MB/sec
+JacksonBenchmark.bigJsonRead:·gc.churn.G1_Old_Gen.norm                   thrpt   50        1.918 ±     0.690    B/op
+JacksonBenchmark.bigJsonRead:·gc.count                                   thrpt   50      140.000              counts
+JacksonBenchmark.bigJsonRead:·gc.time                                    thrpt   50     1947.000                  ms
+JacksonBenchmark.bigJacksonStreamWrite                                   thrpt   50     4452.573 ±    25.720   ops/s
+JacksonBenchmark.bigJacksonStreamWrite:·gc.alloc.rate                    thrpt   50      293.150 ±     1.634  MB/sec
+JacksonBenchmark.bigJacksonStreamWrite:·gc.alloc.rate.norm               thrpt   50    72540.906 ±    77.507    B/op
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Eden_Space           thrpt   50      289.564 ±    49.881  MB/sec
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Eden_Space.norm      thrpt   50    71618.812 ± 12260.921    B/op
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Old_Gen              thrpt   50        0.005 ±     0.007  MB/sec
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Old_Gen.norm         thrpt   50        1.264 ±     1.756    B/op
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Survivor_Space       thrpt   50        0.019 ±     0.029  MB/sec
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Survivor_Space.norm  thrpt   50        4.697 ±     7.047    B/op
+JacksonBenchmark.bigJacksonStreamWrite:·gc.count                         thrpt   50       62.000              counts
+JacksonBenchmark.bigJacksonStreamWrite:·gc.time                          thrpt   50     1004.000                  ms
+JacksonBenchmark.bigJsonWrite                                            thrpt   50     4423.017 ±    40.770   ops/s
+JacksonBenchmark.bigJsonWrite:·gc.alloc.rate                             thrpt   50      488.272 ±     4.752  MB/sec
+JacksonBenchmark.bigJsonWrite:·gc.alloc.rate.norm                        thrpt   50   121645.441 ±  1243.170    B/op
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Eden_Space                    thrpt   50      499.809 ±    40.529  MB/sec
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Eden_Space.norm               thrpt   50   124490.468 ±  9966.077    B/op
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Old_Gen                       thrpt   50        0.001 ±     0.001  MB/sec
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Old_Gen.norm                  thrpt   50        0.312 ±     0.180    B/op
+JacksonBenchmark.bigJsonWrite:·gc.count                                  thrpt   50      107.000              counts
+JacksonBenchmark.bigJsonWrite:·gc.time                                   thrpt   50     1495.000                  ms
+JacksonBenchmark.tinyJacksonStreamRead                                   thrpt   50  2170555.253 ± 82429.117   ops/s
+JacksonBenchmark.tinyJacksonStreamRead:·gc.alloc.rate                    thrpt   50     1685.119 ±    18.200  MB/sec
+JacksonBenchmark.tinyJacksonStreamRead:·gc.alloc.rate.norm               thrpt   50      858.432 ±    20.404    B/op
+JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Eden_Space           thrpt   50     1676.851 ±    44.874  MB/sec
+JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Eden_Space.norm      thrpt   50      853.706 ±    25.141    B/op
+JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Old_Gen              thrpt   50        0.005 ±     0.001  MB/sec
+JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Old_Gen.norm         thrpt   50        0.002 ±     0.001    B/op
+JacksonBenchmark.tinyJacksonStreamRead:·gc.count                         thrpt   50      359.000              counts
+JacksonBenchmark.tinyJacksonStreamRead:·gc.time                          thrpt   50     4795.000                  ms
+JacksonBenchmark.tinyJacksonStreamWrite                                  thrpt   50  3545584.394 ± 44895.517   ops/s
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.alloc.rate                   thrpt   50     1261.515 ±    15.972  MB/sec
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.alloc.rate.norm              thrpt   50      392.020 ±     0.001    B/op
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Eden_Space          thrpt   50     1261.117 ±    57.204  MB/sec
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Eden_Space.norm     thrpt   50      391.847 ±    16.741    B/op
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Old_Gen             thrpt   50        0.004 ±     0.001  MB/sec
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Old_Gen.norm        thrpt   50        0.001 ±     0.001    B/op
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.count                        thrpt   50      270.000              counts
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.time                         thrpt   50     3412.000                  ms
+JacksonBenchmark.tinyJsonRead                                            thrpt   50  1782984.423 ± 78334.317   ops/s
+JacksonBenchmark.tinyJsonRead:·gc.alloc.rate                             thrpt   50     1589.591 ±    45.119  MB/sec
+JacksonBenchmark.tinyJsonRead:·gc.alloc.rate.norm                        thrpt   50      985.318 ±    22.254    B/op
+JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Eden_Space                    thrpt   50     1588.106 ±    61.813  MB/sec
+JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Eden_Space.norm               thrpt   50      983.672 ±    28.595    B/op
+JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Old_Gen                       thrpt   50        0.005 ±     0.001  MB/sec
+JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Old_Gen.norm                  thrpt   50        0.003 ±     0.001    B/op
+JacksonBenchmark.tinyJsonRead:·gc.count                                  thrpt   50      340.000              counts
+JacksonBenchmark.tinyJsonRead:·gc.time                                   thrpt   50     4707.000                  ms
+JacksonBenchmark.tinyJsonWrite                                           thrpt   50  2719885.003 ± 32318.056   ops/s
+JacksonBenchmark.tinyJsonWrite:·gc.alloc.rate                            thrpt   50     1451.101 ±    15.252  MB/sec
+JacksonBenchmark.tinyJsonWrite:·gc.alloc.rate.norm                       thrpt   50      587.866 ±     1.999    B/op
+JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Eden_Space                   thrpt   50     1447.981 ±    46.714  MB/sec
+JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Eden_Space.norm              thrpt   50      586.629 ±    18.008    B/op
+JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Old_Gen                      thrpt   50        0.005 ±     0.001  MB/sec
+JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Old_Gen.norm                 thrpt   50        0.002 ±     0.001    B/op
+JacksonBenchmark.tinyJsonWrite:·gc.count                                 thrpt   50      310.000              counts
+JacksonBenchmark.tinyJsonWrite:·gc.time                                  thrpt   50     4162.000                  ms
 ---
 
 Run complete. Total time: 02:20:33
@@ -207,80 +208,81 @@ docker run -it volkodav/java-jackson-benchmark:java11
 #### Raw Results
 
 ```
-Benchmark
-JacksonBenchmark.bigJacksonStreamRead                                 thrpt   50     2750.104 ±    34.259   ops/s
-JacksonBenchmark.bigJacksonStreamRead:·gc.alloc.rate                  thrpt   50      570.584 ±     6.981  MB/sec
-JacksonBenchmark.bigJacksonStreamRead:·gc.alloc.rate.norm             thrpt   50   228618.534 ±   922.163    B/op
-JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Eden_Space         thrpt   50      579.105 ±    58.322  MB/sec
-JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Eden_Space.norm    thrpt   50   232141.517 ± 23443.558    B/op
-JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Old_Gen            thrpt   50        0.002 ±     0.001  MB/sec
-JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Old_Gen.norm       thrpt   50        0.697 ±     0.278    B/op
-JacksonBenchmark.bigJacksonStreamRead:·gc.count                       thrpt   50      124.000              counts
-JacksonBenchmark.bigJacksonStreamRead:·gc.time                        thrpt   50     1475.000                  ms
-JacksonBenchmark.bigJsonRead                                          thrpt   50     2418.981 ±    36.585   ops/s
-JacksonBenchmark.bigJsonRead:·gc.alloc.rate                           thrpt   50      595.782 ±     8.818  MB/sec
-JacksonBenchmark.bigJsonRead:·gc.alloc.rate.norm                      thrpt   50   271368.481 ±   783.977    B/op
-JacksonBenchmark.bigJsonRead:·gc.churn.G1_Eden_Space                  thrpt   50      593.202 ±    58.213  MB/sec
-JacksonBenchmark.bigJsonRead:·gc.churn.G1_Eden_Space.norm             thrpt   50   270295.391 ± 26414.307    B/op
-JacksonBenchmark.bigJsonRead:·gc.churn.G1_Old_Gen                     thrpt   50        0.002 ±     0.001  MB/sec
-JacksonBenchmark.bigJsonRead:·gc.churn.G1_Old_Gen.norm                thrpt   50        0.863 ±     0.350    B/op
-JacksonBenchmark.bigJsonRead:·gc.count                                thrpt   50      127.000              counts
-JacksonBenchmark.bigJsonRead:·gc.time                                 thrpt   50     1448.000                  ms
-JacksonBenchmark.bigJacksonStreamWrite                                thrpt   50     3540.935 ±   158.383   ops/s
-JacksonBenchmark.bigJacksonStreamWrite:·gc.alloc.rate                 thrpt   50      415.079 ±    18.693  MB/sec
-JacksonBenchmark.bigJacksonStreamWrite:·gc.alloc.rate.norm            thrpt   50   129153.420 ±   105.760    B/op
-JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Eden_Space        thrpt   50      420.352 ±    46.710  MB/sec
-JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Eden_Space.norm   thrpt   50   130624.030 ± 13976.153    B/op
-JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Old_Gen           thrpt   50        0.001 ±     0.001  MB/sec
-JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Old_Gen.norm      thrpt   50        0.212 ±     0.113    B/op
-JacksonBenchmark.bigJacksonStreamWrite:·gc.count                      thrpt   50       90.000              counts
-JacksonBenchmark.bigJacksonStreamWrite:·gc.time                       thrpt   50      766.000                  ms
-JacksonBenchmark.bigJsonWrite                                         thrpt   50     4415.327 ±    41.827   ops/s
-JacksonBenchmark.bigJsonWrite:·gc.alloc.rate                          thrpt   50      262.637 ±     2.286  MB/sec
-JacksonBenchmark.bigJsonWrite:·gc.alloc.rate.norm                     thrpt   50    65539.682 ±    96.584    B/op
-JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Eden_Space                 thrpt   50      266.242 ±    40.529  MB/sec
-JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Eden_Space.norm            thrpt   50    66409.491 ±  9996.400    B/op
-JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Old_Gen                    thrpt   50       ≈ 10⁻⁴              MB/sec
-JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Old_Gen.norm               thrpt   50        0.078 ±     0.135    B/op
-JacksonBenchmark.bigJsonWrite:·gc.count                               thrpt   50       57.000              counts
-JacksonBenchmark.bigJsonWrite:·gc.time                                thrpt   50      438.000                  ms
-JacksonBenchmark.tinyJacksonStreamRead                                thrpt   50  2210673.734 ± 85548.178   ops/s
-JacksonBenchmark.tinyJacksonStreamRead:·gc.alloc.rate                 thrpt   50     1591.781 ±    27.532  MB/sec
-JacksonBenchmark.tinyJacksonStreamRead:·gc.alloc.rate.norm            thrpt   50      796.020 ±    19.290    B/op
-JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Eden_Space        thrpt   50     1592.692 ±    60.395  MB/sec
-JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Eden_Space.norm   thrpt   50      795.832 ±    28.983    B/op
-JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Old_Gen           thrpt   50        0.001 ±     0.001  MB/sec
-JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Old_Gen.norm      thrpt   50       ≈ 10⁻⁴                B/op
-JacksonBenchmark.tinyJacksonStreamRead:·gc.count                      thrpt   50      341.000              counts
-JacksonBenchmark.tinyJacksonStreamRead:·gc.time                       thrpt   50     3215.000                  ms
-JacksonBenchmark.tinyJsonRead                                         thrpt   50  1852237.578 ± 72630.244   ops/s
-JacksonBenchmark.tinyJsonRead:·gc.alloc.rate                          thrpt   50     1518.020 ±    33.451  MB/sec
-JacksonBenchmark.tinyJsonRead:·gc.alloc.rate.norm                     thrpt   50      905.623 ±    19.503    B/op
-JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Eden_Space                 thrpt   50     1513.345 ±    62.848  MB/sec
-JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Eden_Space.norm            thrpt   50      902.923 ±    38.079    B/op
-JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Old_Gen                    thrpt   50        0.001 ±     0.001  MB/sec
-JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Old_Gen.norm               thrpt   50       ≈ 10⁻³                B/op
-JacksonBenchmark.tinyJsonRead:·gc.count                               thrpt   50      324.000              counts
-JacksonBenchmark.tinyJsonRead:·gc.time                                thrpt   50     3218.000                  ms
-JacksonBenchmark.tinyJacksonStreamWrite                               thrpt   50  3167934.441 ± 43935.080   ops/s
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.alloc.rate                thrpt   50     1184.578 ±    16.519  MB/sec
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.alloc.rate.norm           thrpt   50      412.014 ±     2.000    B/op
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Eden_Space       thrpt   50     1191.041 ±    34.996  MB/sec
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Eden_Space.norm  thrpt   50      414.336 ±    11.290    B/op
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Old_Gen          thrpt   50       ≈ 10⁻³              MB/sec
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Old_Gen.norm     thrpt   50       ≈ 10⁻⁴                B/op
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.count                     thrpt   50      255.000              counts
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.time                      thrpt   50     2695.000                  ms
-JacksonBenchmark.tinyJsonWrite                                        thrpt   50  2670052.814 ± 49658.273   ops/s
-JacksonBenchmark.tinyJsonWrite:·gc.alloc.rate                         thrpt   50     1252.788 ±    23.188  MB/sec
-JacksonBenchmark.tinyJsonWrite:·gc.alloc.rate.norm                    thrpt   50      516.977 ±     1.942    B/op
-JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Eden_Space                thrpt   50     1256.457 ±    56.686  MB/sec
-JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Eden_Space.norm           thrpt   50      518.607 ±    21.914    B/op
-JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Old_Gen                   thrpt   50       ≈ 10⁻³              MB/sec
-JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Old_Gen.norm              thrpt   50       ≈ 10⁻⁴                B/op
-JacksonBenchmark.tinyJsonWrite:·gc.count                              thrpt   50      269.000              counts
-JacksonBenchmark.tinyJsonWrite:·gc.time                               thrpt   50     2598.000                  ms
-
+Benchmark                                                              Mode  Cnt        Score        Error   Units
+JacksonBenchmark.bigJacksonStreamRead                                 thrpt   50     2770.705 ±     23.331   ops/s
+JacksonBenchmark.bigJacksonStreamRead:·gc.alloc.rate                  thrpt   50      574.115 ±      4.398  MB/sec
+JacksonBenchmark.bigJacksonStreamRead:·gc.alloc.rate.norm             thrpt   50   228328.967 ±    773.984    B/op
+JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Eden_Space         thrpt   50      574.458 ±     58.192  MB/sec
+JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Eden_Space.norm    thrpt   50   228394.768 ±  22899.346    B/op
+JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Old_Gen            thrpt   50        0.002 ±      0.001  MB/sec
+JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Old_Gen.norm       thrpt   50        0.708 ±      0.296    B/op
+JacksonBenchmark.bigJacksonStreamRead:·gc.count                       thrpt   50      123.000               counts
+JacksonBenchmark.bigJacksonStreamRead:·gc.time                        thrpt   50     1265.000                   ms
+JacksonBenchmark.bigJacksonStreamWrite                                thrpt   50     4130.809 ±     89.081   ops/s
+JacksonBenchmark.bigJacksonStreamWrite:·gc.alloc.rate                 thrpt   50      259.100 ±      5.581  MB/sec
+JacksonBenchmark.bigJacksonStreamWrite:·gc.alloc.rate.norm            thrpt   50    69111.401 ±     65.189    B/op
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Eden_Space        thrpt   50      261.554 ±     37.948  MB/sec
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Eden_Space.norm   thrpt   50    69717.677 ±   9711.040    B/op
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Old_Gen           thrpt   50       ≈ 10⁻³               MB/sec
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Old_Gen.norm      thrpt   50        0.131 ±      0.177    B/op
+JacksonBenchmark.bigJacksonStreamWrite:·gc.count                      thrpt   50       56.000               counts
+JacksonBenchmark.bigJacksonStreamWrite:·gc.time                       thrpt   50      399.000                   ms
+JacksonBenchmark.bigJsonWrite                                         thrpt   50     4427.961 ±     23.855   ops/s
+JacksonBenchmark.bigJsonWrite:·gc.alloc.rate                          thrpt   50      252.599 ±      4.911  MB/sec
+JacksonBenchmark.bigJsonWrite:·gc.alloc.rate.norm                     thrpt   50    62854.285 ±   1243.701    B/op
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Eden_Space                 thrpt   50      256.880 ±     35.020  MB/sec
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Eden_Space.norm            thrpt   50    63942.043 ±   8785.069    B/op
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Old_Gen                    thrpt   50        0.001 ±      0.001  MB/sec
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Old_Gen.norm               thrpt   50        0.245 ±      0.367    B/op
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Survivor_Space             thrpt   50        0.011 ±      0.023  MB/sec
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Survivor_Space.norm        thrpt   50        2.838 ±      5.617    B/op
+JacksonBenchmark.bigJsonWrite:·gc.count                               thrpt   50       55.000               counts
+JacksonBenchmark.bigJsonWrite:·gc.time                                thrpt   50      529.000                   ms
+JacksonBenchmark.bigJsonRead                                          thrpt   50     2444.855 ±     21.058   ops/s
+JacksonBenchmark.bigJsonRead:·gc.alloc.rate                           thrpt   50      602.380 ±      4.878  MB/sec
+JacksonBenchmark.bigJsonRead:·gc.alloc.rate.norm                      thrpt   50   271462.609 ±    932.309    B/op
+JacksonBenchmark.bigJsonRead:·gc.churn.G1_Eden_Space                  thrpt   50      607.227 ±     57.208  MB/sec
+JacksonBenchmark.bigJsonRead:·gc.churn.G1_Eden_Space.norm             thrpt   50   273727.771 ±  25917.011    B/op
+JacksonBenchmark.bigJsonRead:·gc.churn.G1_Old_Gen                     thrpt   50        0.002 ±      0.001  MB/sec
+JacksonBenchmark.bigJsonRead:·gc.churn.G1_Old_Gen.norm                thrpt   50        0.864 ±      0.318    B/op
+JacksonBenchmark.bigJsonRead:·gc.count                                thrpt   50      130.000               counts
+JacksonBenchmark.bigJsonRead:·gc.time                                 thrpt   50     1516.000                   ms
+JacksonBenchmark.tinyJacksonStreamRead                                thrpt   50  2246011.065 ± 115879.934   ops/s
+JacksonBenchmark.tinyJacksonStreamRead:·gc.alloc.rate                 thrpt   50     1561.536 ±     39.207  MB/sec
+JacksonBenchmark.tinyJacksonStreamRead:·gc.alloc.rate.norm            thrpt   50      770.420 ±     24.206    B/op
+JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Eden_Space        thrpt   50     1564.764 ±     62.883  MB/sec
+JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Eden_Space.norm   thrpt   50      771.894 ±     34.097    B/op
+JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Old_Gen           thrpt   50        0.001 ±      0.001  MB/sec
+JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Old_Gen.norm      thrpt   50       ≈ 10⁻³                 B/op
+JacksonBenchmark.tinyJacksonStreamRead:·gc.count                      thrpt   50      335.000               counts
+JacksonBenchmark.tinyJacksonStreamRead:·gc.time                       thrpt   50     3317.000                   ms
+JacksonBenchmark.tinyJacksonStreamWrite                               thrpt   50  3185827.775 ±  75512.088   ops/s
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.alloc.rate                thrpt   50     1133.486 ±     26.857  MB/sec
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.alloc.rate.norm           thrpt   50      392.014 ±      0.001    B/op
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Eden_Space       thrpt   50     1134.990 ±     61.826  MB/sec
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Eden_Space.norm  thrpt   50      392.212 ±     17.650    B/op
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Old_Gen          thrpt   50       ≈ 10⁻³               MB/sec
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Old_Gen.norm     thrpt   50       ≈ 10⁻⁴                 B/op
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.count                     thrpt   50      243.000               counts
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.time                      thrpt   50     2467.000                   ms
+JacksonBenchmark.tinyJsonRead                                         thrpt   50  1871220.307 ±  60270.647   ops/s
+JacksonBenchmark.tinyJsonRead:·gc.alloc.rate                          thrpt   50     1534.262 ±     22.064  MB/sec
+JacksonBenchmark.tinyJsonRead:·gc.alloc.rate.norm                     thrpt   50      905.624 ±     19.501    B/op
+JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Eden_Space                 thrpt   50     1536.750 ±     57.666  MB/sec
+JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Eden_Space.norm            thrpt   50      907.373 ±     38.782    B/op
+JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Old_Gen                    thrpt   50        0.001 ±      0.001  MB/sec
+JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Old_Gen.norm               thrpt   50       ≈ 10⁻³                 B/op
+JacksonBenchmark.tinyJsonRead:·gc.count                               thrpt   50      329.000               counts
+JacksonBenchmark.tinyJsonRead:·gc.time                                thrpt   50     3385.000                   ms
+JacksonBenchmark.tinyJsonWrite                                        thrpt   50  2720099.204 ±  33028.551   ops/s
+JacksonBenchmark.tinyJsonWrite:·gc.alloc.rate                         thrpt   50     1270.384 ±     15.911  MB/sec
+JacksonBenchmark.tinyJsonWrite:·gc.alloc.rate.norm                    thrpt   50      514.576 ±      1.866    B/op
+JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Eden_Space                thrpt   50     1275.141 ±     58.185  MB/sec
+JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Eden_Space.norm           thrpt   50      516.445 ±     22.385    B/op
+JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Old_Gen                   thrpt   50        0.001 ±      0.001  MB/sec
+JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Old_Gen.norm              thrpt   50       ≈ 10⁻⁴                 B/op
+JacksonBenchmark.tinyJsonWrite:·gc.count                              thrpt   50      273.000               counts
+JacksonBenchmark.tinyJsonWrite:·gc.time                               thrpt   50     2677.000                   ms
 --- 
 
 # Run complete. Total time: 02:20:36
@@ -311,82 +313,83 @@ docker run -it volkodav/java-jackson-benchmark:java12
 
 ```
 
-Benchmark                                                              Mode  Cnt        Score       Error   Units
-JacksonBenchmark.bigJacksonStreamRead                                 thrpt   50     2728.870 ±    30.887   ops/s
-JacksonBenchmark.bigJacksonStreamRead:·gc.alloc.rate                  thrpt   50      566.588 ±     7.019  MB/sec
-JacksonBenchmark.bigJacksonStreamRead:·gc.alloc.rate.norm             thrpt   50   228775.797 ±   734.014    B/op
-JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Eden_Space         thrpt   50      565.107 ±    57.633  MB/sec
-JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Eden_Space.norm    thrpt   50   228246.167 ± 23270.992    B/op
-JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Old_Gen            thrpt   50        0.002 ±     0.001  MB/sec
-JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Old_Gen.norm       thrpt   50        0.793 ±     0.316    B/op
-JacksonBenchmark.bigJacksonStreamRead:·gc.count                       thrpt   50      121.000              counts
-JacksonBenchmark.bigJacksonStreamRead:·gc.time                        thrpt   50      422.000                  ms
-JacksonBenchmark.bigJsonRead                                          thrpt   50     2422.055 ±    17.943   ops/s
-JacksonBenchmark.bigJsonRead:·gc.alloc.rate                           thrpt   50      596.009 ±     4.263  MB/sec
-JacksonBenchmark.bigJsonRead:·gc.alloc.rate.norm                      thrpt   50   271123.828 ±   817.774    B/op
-JacksonBenchmark.bigJsonRead:·gc.churn.G1_Eden_Space                  thrpt   50      593.206 ±    58.221  MB/sec
-JacksonBenchmark.bigJsonRead:·gc.churn.G1_Eden_Space.norm             thrpt   50   270003.927 ± 26830.559    B/op
-JacksonBenchmark.bigJsonRead:·gc.churn.G1_Old_Gen                     thrpt   50        0.002 ±     0.001  MB/sec
-JacksonBenchmark.bigJsonRead:·gc.churn.G1_Old_Gen.norm                thrpt   50        0.804 ±     0.309    B/op
-JacksonBenchmark.bigJsonRead:·gc.count                                thrpt   50      127.000              counts
-JacksonBenchmark.bigJsonRead:·gc.time                                 thrpt   50      448.000                  ms
-JacksonBenchmark.bigJacksonStreamWrite                                thrpt   50     3592.260 ±   187.938   ops/s
-JacksonBenchmark.bigJacksonStreamWrite:·gc.alloc.rate                 thrpt   50      421.000 ±    22.029  MB/sec
-JacksonBenchmark.bigJacksonStreamWrite:·gc.alloc.rate.norm            thrpt   50   129133.714 ±    92.155    B/op
-JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Eden_Space        thrpt   50      434.358 ±    52.282  MB/sec
-JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Eden_Space.norm   thrpt   50   133043.378 ± 14843.850    B/op
-JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Old_Gen           thrpt   50        0.001 ±     0.001  MB/sec
-JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Old_Gen.norm      thrpt   50        0.193 ±     0.118    B/op
-JacksonBenchmark.bigJacksonStreamWrite:·gc.count                      thrpt   50       93.000              counts
-JacksonBenchmark.bigJacksonStreamWrite:·gc.time                       thrpt   50      320.000                  ms
-JacksonBenchmark.bigJsonWrite                                         thrpt   50     4432.645 ±    18.959   ops/s
-JacksonBenchmark.bigJsonWrite:·gc.alloc.rate                          thrpt   50      259.438 ±     3.634  MB/sec
-JacksonBenchmark.bigJsonWrite:·gc.alloc.rate.norm                     thrpt   50    64492.506 ±  1017.910    B/op
-JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Eden_Space                 thrpt   50      266.230 ±    40.517  MB/sec
-JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Eden_Space.norm            thrpt   50    66163.377 ± 10041.355    B/op
-JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Old_Gen                    thrpt   50       ≈ 10⁻³              MB/sec
-JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Old_Gen.norm               thrpt   50        0.110 ±     0.160    B/op
-JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Survivor_Space             thrpt   50        0.015 ±     0.026  MB/sec
-JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Survivor_Space.norm        thrpt   50        3.797 ±     6.438    B/op
-JacksonBenchmark.bigJsonWrite:·gc.count                               thrpt   50       57.000              counts
-JacksonBenchmark.bigJsonWrite:·gc.time                                thrpt   50      222.000                  ms
-JacksonBenchmark.tinyJacksonStreamRead                                thrpt   50  2224710.864 ± 78925.983   ops/s
-JacksonBenchmark.tinyJacksonStreamRead:·gc.alloc.rate                 thrpt   50     1575.441 ±    22.824  MB/sec
-JacksonBenchmark.tinyJacksonStreamRead:·gc.alloc.rate.norm            thrpt   50      782.420 ±    16.476    B/op
-JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Eden_Space        thrpt   50     1574.064 ±    51.255  MB/sec
-JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Eden_Space.norm   thrpt   50      782.241 ±    31.610    B/op
-JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Old_Gen           thrpt   50        0.001 ±     0.001  MB/sec
-JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Old_Gen.norm      thrpt   50        0.001 ±     0.001    B/op
-JacksonBenchmark.tinyJacksonStreamRead:·gc.count                      thrpt   50      337.000              counts
-JacksonBenchmark.tinyJacksonStreamRead:·gc.time                       thrpt   50     1232.000                  ms
-JacksonBenchmark.tinyJsonRead                                         thrpt   50  1877135.961 ± 74431.201   ops/s
-JacksonBenchmark.tinyJsonRead:·gc.alloc.rate                          thrpt   50     1533.838 ±    31.787  MB/sec
-JacksonBenchmark.tinyJsonRead:·gc.alloc.rate.norm                     thrpt   50      903.221 ±    20.827    B/op
-JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Eden_Space                 thrpt   50     1532.005 ±    62.492  MB/sec
-JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Eden_Space.norm            thrpt   50      901.827 ±    36.633    B/op
-JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Old_Gen                    thrpt   50        0.001 ±     0.001  MB/sec
-JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Old_Gen.norm               thrpt   50       ≈ 10⁻³                B/op
-JacksonBenchmark.tinyJsonRead:·gc.count                               thrpt   50      328.000              counts
-JacksonBenchmark.tinyJsonRead:·gc.time                                thrpt   50     1162.000                  ms
-JacksonBenchmark.tinyJacksonStreamWrite                               thrpt   50  3209819.503 ± 61404.246   ops/s
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.alloc.rate                thrpt   50     1195.117 ±    23.104  MB/sec
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.alloc.rate.norm           thrpt   50      410.254 ±     1.796    B/op
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Eden_Space       thrpt   50     1195.699 ±    44.582  MB/sec
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Eden_Space.norm  thrpt   50      410.557 ±    13.801    B/op
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Old_Gen          thrpt   50       ≈ 10⁻³              MB/sec
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Old_Gen.norm     thrpt   50       ≈ 10⁻⁴                B/op
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.count                     thrpt   50      256.000              counts
-JacksonBenchmark.tinyJacksonStreamWrite:·gc.time                      thrpt   50      924.000                  ms
-JacksonBenchmark.tinyJsonWrite                                        thrpt   50  2743931.361 ± 49476.346   ops/s
-JacksonBenchmark.tinyJsonWrite:·gc.alloc.rate                         thrpt   50     1282.224 ±    22.296  MB/sec
-JacksonBenchmark.tinyJsonWrite:·gc.alloc.rate.norm                    thrpt   50      514.896 ±     1.920    B/op
-JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Eden_Space                thrpt   50     1279.809 ±    58.331  MB/sec
-JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Eden_Space.norm           thrpt   50      513.879 ±    21.435    B/op
-JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Old_Gen                   thrpt   50       ≈ 10⁻³              MB/sec
-JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Old_Gen.norm              thrpt   50       ≈ 10⁻⁴                B/op
-JacksonBenchmark.tinyJsonWrite:·gc.count                              thrpt   50      274.000              counts
-JacksonBenchmark.tinyJsonWrite:·gc.time                               thrpt   50      924.000                  ms
-
+Benchmark                                                                 Mode  Cnt        Score       Error   Units
+JacksonBenchmark.bigJacksonStreamRead                                    thrpt   50     2799.989 ±    24.638   ops/s
+JacksonBenchmark.bigJacksonStreamRead:·gc.alloc.rate                     thrpt   50      581.410 ±     5.043  MB/sec
+JacksonBenchmark.bigJacksonStreamRead:·gc.alloc.rate.norm                thrpt   50   228808.335 ±   882.054    B/op
+JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Eden_Space            thrpt   50      579.130 ±    58.334  MB/sec
+JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Eden_Space.norm       thrpt   50   227850.569 ± 22724.254    B/op
+JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Old_Gen               thrpt   50        0.002 ±     0.001  MB/sec
+JacksonBenchmark.bigJacksonStreamRead:·gc.churn.G1_Old_Gen.norm          thrpt   50        0.656 ±     0.254    B/op
+JacksonBenchmark.bigJacksonStreamRead:·gc.count                          thrpt   50      124.000              counts
+JacksonBenchmark.bigJacksonStreamRead:·gc.time                           thrpt   50      441.000                  ms
+JacksonBenchmark.bigJacksonStreamWrite                                   thrpt   50     3868.468 ±    80.472   ops/s
+JacksonBenchmark.bigJacksonStreamWrite:·gc.alloc.rate                    thrpt   50      242.704 ±     5.039  MB/sec
+JacksonBenchmark.bigJacksonStreamWrite:·gc.alloc.rate.norm               thrpt   50    69124.784 ±    71.752    B/op
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Eden_Space           thrpt   50      238.198 ±    16.355  MB/sec
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Eden_Space.norm      thrpt   50    67881.682 ±  4343.295    B/op
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Old_Gen              thrpt   50       ≈ 10⁻³              MB/sec
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Old_Gen.norm         thrpt   50        0.126 ±     0.181    B/op
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Survivor_Space       thrpt   50        0.015 ±     0.026  MB/sec
+JacksonBenchmark.bigJacksonStreamWrite:·gc.churn.G1_Survivor_Space.norm  thrpt   50        4.419 ±     7.503    B/op
+JacksonBenchmark.bigJacksonStreamWrite:·gc.count                         thrpt   50       51.000              counts
+JacksonBenchmark.bigJacksonStreamWrite:·gc.time                          thrpt   50      195.000                  ms
+JacksonBenchmark.bigJsonWrite                                            thrpt   50     4427.390 ±    32.559   ops/s
+JacksonBenchmark.bigJsonWrite:·gc.alloc.rate                             thrpt   50      263.209 ±     1.862  MB/sec
+JacksonBenchmark.bigJsonWrite:·gc.alloc.rate.norm                        thrpt   50    65500.561 ±    71.475    B/op
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Eden_Space                    thrpt   50      266.231 ±    40.512  MB/sec
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Eden_Space.norm               thrpt   50    66284.376 ± 10143.237    B/op
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Old_Gen                       thrpt   50       ≈ 10⁻³              MB/sec
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Old_Gen.norm                  thrpt   50        0.095 ±     0.167    B/op
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Survivor_Space                thrpt   50        0.008 ±     0.019  MB/sec
+JacksonBenchmark.bigJsonWrite:·gc.churn.G1_Survivor_Space.norm           thrpt   50        1.911 ±     4.681    B/op
+JacksonBenchmark.bigJsonWrite:·gc.count                                  thrpt   50       57.000              counts
+JacksonBenchmark.bigJsonWrite:·gc.time                                   thrpt   50      210.000                  ms
+JacksonBenchmark.bigJsonRead                                             thrpt   50     2456.241 ±    19.878   ops/s
+JacksonBenchmark.bigJsonRead:·gc.alloc.rate                              thrpt   50      604.279 ±     4.993  MB/sec
+JacksonBenchmark.bigJsonRead:·gc.alloc.rate.norm                         thrpt   50   271051.819 ±   736.666    B/op
+JacksonBenchmark.bigJsonRead:·gc.churn.G1_Eden_Space                     thrpt   50      602.556 ±    57.656  MB/sec
+JacksonBenchmark.bigJsonRead:·gc.churn.G1_Eden_Space.norm                thrpt   50   270291.021 ± 25820.684    B/op
+JacksonBenchmark.bigJsonRead:·gc.churn.G1_Old_Gen                        thrpt   50        0.002 ±     0.001  MB/sec
+JacksonBenchmark.bigJsonRead:·gc.churn.G1_Old_Gen.norm                   thrpt   50        0.761 ±     0.333    B/op
+JacksonBenchmark.bigJsonRead:·gc.count                                   thrpt   50      129.000              counts
+JacksonBenchmark.bigJsonRead:·gc.time                                    thrpt   50      458.000                  ms
+JacksonBenchmark.tinyJacksonStreamRead                                   thrpt   50  2224497.325 ± 92810.021   ops/s
+JacksonBenchmark.tinyJacksonStreamRead:·gc.alloc.rate                    thrpt   50     1568.815 ±    30.284  MB/sec
+JacksonBenchmark.tinyJacksonStreamRead:·gc.alloc.rate.norm               thrpt   50      780.020 ±    19.701    B/op
+JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Eden_Space           thrpt   50     1578.680 ±    59.799  MB/sec
+JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Eden_Space.norm      thrpt   50      784.436 ±    29.941    B/op
+JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Old_Gen              thrpt   50        0.001 ±     0.001  MB/sec
+JacksonBenchmark.tinyJacksonStreamRead:·gc.churn.G1_Old_Gen.norm         thrpt   50        0.001 ±     0.001    B/op
+JacksonBenchmark.tinyJacksonStreamRead:·gc.count                         thrpt   50      338.000              counts
+JacksonBenchmark.tinyJacksonStreamRead:·gc.time                          thrpt   50     1231.000                  ms
+JacksonBenchmark.tinyJacksonStreamWrite                                  thrpt   50  3254260.574 ± 66670.117   ops/s
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.alloc.rate                   thrpt   50     1157.835 ±    23.724  MB/sec
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.alloc.rate.norm              thrpt   50      392.014 ±     0.001    B/op
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Eden_Space          thrpt   50     1158.346 ±    52.015  MB/sec
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Eden_Space.norm     thrpt   50      392.096 ±    15.163    B/op
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Old_Gen             thrpt   50       ≈ 10⁻³              MB/sec
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.churn.G1_Old_Gen.norm        thrpt   50       ≈ 10⁻⁴                B/op
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.count                        thrpt   50      248.000              counts
+JacksonBenchmark.tinyJacksonStreamWrite:·gc.time                         thrpt   50      874.000                  ms
+JacksonBenchmark.tinyJsonRead                                            thrpt   50  1909429.227 ± 80772.214   ops/s
+JacksonBenchmark.tinyJsonRead:·gc.alloc.rate                             thrpt   50     1568.459 ±    28.653  MB/sec
+JacksonBenchmark.tinyJsonRead:·gc.alloc.rate.norm                        thrpt   50      908.824 ±    24.017    B/op
+JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Eden_Space                    thrpt   50     1569.297 ±    66.213  MB/sec
+JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Eden_Space.norm               thrpt   50      908.363 ±    37.470    B/op
+JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Old_Gen                       thrpt   50        0.001 ±     0.001  MB/sec
+JacksonBenchmark.tinyJsonRead:·gc.churn.G1_Old_Gen.norm                  thrpt   50       ≈ 10⁻³                B/op
+JacksonBenchmark.tinyJsonRead:·gc.count                                  thrpt   50      336.000              counts
+JacksonBenchmark.tinyJsonRead:·gc.time                                   thrpt   50     1237.000                  ms
+JacksonBenchmark.tinyJsonWrite                                           thrpt   50  2788025.395 ± 52456.911   ops/s
+JacksonBenchmark.tinyJsonWrite:·gc.alloc.rate                            thrpt   50     1305.665 ±    23.804  MB/sec
+JacksonBenchmark.tinyJsonWrite:·gc.alloc.rate.norm                       thrpt   50      516.016 ±     2.000    B/op
+JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Eden_Space                   thrpt   50     1298.503 ±    57.971  MB/sec
+JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Eden_Space.norm              thrpt   50      513.331 ±    21.872    B/op
+JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Old_Gen                      thrpt   50        0.001 ±     0.001  MB/sec
+JacksonBenchmark.tinyJsonWrite:·gc.churn.G1_Old_Gen.norm                 thrpt   50       ≈ 10⁻⁴                B/op
+JacksonBenchmark.tinyJsonWrite:·gc.count                                 thrpt   50      278.000              counts
+JacksonBenchmark.tinyJsonWrite:·gc.time                                  thrpt   50      989.000                  ms
 ---
 
 # Run complete. Total time: 02:20:33
