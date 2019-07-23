@@ -8,9 +8,9 @@
 
 The idea of the project is to verify the statement from the [Jackson Streaming API documentation](https://github.com/FasterXML/jackson-docs/wiki/Presentation:-Jackson-Performance)
 
-```
+`
 If you explicitly rewrite all the conversions to use the Streaming API instead of data binding, you may be able to increase throughput by 30-40%; and this without any changes to actual JSON produced.
-```
+`
 
 
 * Plain  ~ 72B
