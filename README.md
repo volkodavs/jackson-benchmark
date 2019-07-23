@@ -398,10 +398,13 @@ JacksonBenchmark.tinyJsonWrite:·gc.time                                  thrpt 
 ## Results  
 
 ### Plain object 
-<img width="518" alt="Plain object" src="https://user-images.githubusercontent.com/4140597/61590467-c984de80-abb1-11e9-8912-6780bcf7954a.png">
+
+<img width="440" alt="plain object" src="https://user-images.githubusercontent.com/4140597/61713283-19011100-ad50-11e9-94dd-d3697a20be0b.png">
+
 
 ### Complex object 
-<img width="511" alt="Complex object" src="https://user-images.githubusercontent.com/4140597/61590473-d570a080-abb1-11e9-9faf-85f36e322626.png">
+
+<img width="441" alt="complex object" src="https://user-images.githubusercontent.com/4140597/61713282-19011100-ad50-11e9-9993-346c99aa4355.png">
 
 ## Summary 
 
